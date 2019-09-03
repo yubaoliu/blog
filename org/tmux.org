@@ -1,0 +1,20 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+CATEGORIES: default
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+DATE: 2019-09-03 11:12:55
+#+TITLE: Tmux Config 
+#+DESCRIPTION: default
+#+TOC: nil
+#+EXPORT_FILE_NAME: 2019-09-03-tmux.html
+#+OPTIONS: H:2 num:t tags:t timestamps:nil email:t date:t
+#+TOC: headlines 3
+
+* =.bashrc= is not loaded on new tmux terminal
+
+Add this into =.bash_profile=
+#+begin_example
+. ~/.bashrc
+#+end_example
+

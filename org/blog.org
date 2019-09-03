@@ -1,0 +1,265 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+EXPORT_FILE_NAME: 2019-09-02-blog.html
+#+TITLE: How to Create Blog
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: tools
+#+DATE: 2019-09-03 火 14:21:55
+#+DESCRIPTION: post
+#+TOC: true
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t
+
+* Jekyll
+** Important Notes
+- Only support kramdown GitHub Pages only supports kramdown as a
+  Markdown processor. Refer
+  [[https://help.github.com/articles/updating-your-markdown-processor-to-kramdown/][Updating
+  your Markdown processor to kramdown]] for detail. If you use *pandoc*,
+  rather tan *kramdown*, you may receive this warning:
+
+  #+BEGIN_QUOTE
+    The page build completed successfully, but returned the following
+    warning for the =master= branch: You are currently using the
+    'pandoc' Markdown engine, which is no longer supported by GitHub
+    Pages and may cease working at any time. To ensure your site
+    continues to build, remove the 'markdown' setting in your site's
+    '_config.yml' file and confirm your site renders as expected. For
+    more information, see
+    https://help.github.com/articles/updating-your-markdown-processor-to-kramdown/.
+    For information on troubleshooting Jekyll see:
+    https://help.github.com/articles/troubleshooting-jekyll-builds If
+    you have any questions you can contact us by replying to this email.
+  #+END_QUOTE
+** Install and Usage
+- [[https://jekyllrb.com/docs/][jekyllrb-doc]]
+
+#+BEGIN_SRC python
+    sudo apt-get install ruby-full build-essential zlib1g-dev
+    echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+    echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+    echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+#+END_SRC
+
+- Run server
+
+#+begin_export 
+bundle exec jekyll serve
+#+end_export
+
+- clean
+#+begin_example
+bundle exec jekyll clean
+#+end_example
+
+** Frontmatter
+permalink: /:categories/:year/:month/:day/:title.html (.php)
+** Themes
+*** Deploy your theme
+   :PROPERTIES:
+   :CUSTOM_ID: deploy-your-theme
+   :END:
+
+1. Download from [[https://rubygems.org/][RubygemsThemes]] or
+   [[http://jekyllthemes.org/][jekyllthemes]]
+2. Search =jekyll-theme=
+3. vim /gemfile/: =gem "classic-jekyll-theme"=
+4. Run =bundle install=
+5. Vim *_config.yaml*: =theme: classic-jekyll-theme=
+
+*** Recommeded Themes
+   :PROPERTIES:
+   :CUSTOM_ID: recommeded-themes
+   :END:
+
+1. [[https://llawlight.github.io/bohu-jekyll-theme/][bohu-jekyll-theme]]
+2. [[https://github.com/Balancingrock/classic-jekyll-theme][classic-jekyll-theme]]
+3. [[https://github.com/suyan/suyan.github.io][suyan/suyan.github.io]]
+** Grammer
+*** Loop
+   :PROPERTIES:
+   :CUSTOM_ID: loop
+   :END:
+
+#+BEGIN_EXAMPLE
+    {% for post in site.posts %}
+      {{ post.title }} <br>
+    {% endfor %}
+#+END_EXAMPLE
+
+*** Condition sentence
+   :PROPERTIES:
+   :CUSTOM_ID: condition-sentence
+   :END:
+
+=or= and =and= can be used in condition
+
+#+BEGIN_EXAMPLE
+    {% if page.title == "My First Post" %}
+      This is the first post
+    {% elsif page.title == "My Second Post" %}
+      This is the second post
+    {% else %}
+        This is another post
+    {% endif %}
+#+END_EXAMPLE
+
+*** Access yml file
+   :PROPERTIES:
+   :CUSTOM_ID: access-yml-file
+   :END:
+
+_data/people.yml:
+
+#+BEGIN_EXAMPLE
+    - name: "name-A"
+      occupation: "O-A"
+    - name: "naeme-B"
+      occupation: "O-B"
+    - name: "konan"
+      occupation: "tantei"
+#+END_EXAMPLE
+
+home.html:
+
+#+BEGIN_EXAMPLE
+    \{\% for person in site.data.people %}
+      \{\{ person.name }}, {{ person.occupation }}
+    \{\% endfor %}
+#+END_EXAMPLE
+
+*** Access static_files
+   :PROPERTIES:
+   :CUSTOM_ID: access-static_files
+   :END:
+
+#+BEGIN_EXAMPLE
+    \{\% for file in site.static_files %}
+      \{\{ file.path}} <br>
+    \{\% endfor %}
+#+END_EXAMPLE
+
+- /file.basename/
+- /file.extname/
+** Math - Latex
+[[https://lyk6756.github.io/2016/11/25/write_latex_equations.html][Write
+LaTeX Equations in Jekyll Using MathJax & Kramdown]] 2.
+[[http://docs.mathjax.org/en/latest/start.html#using-a-content-delivery-network-cdn]]
+** Images
+/image.html/:
+
+#+BEGIN_EXAMPLE
+    <img src="{{ include.file }}" alt="{{ include.description }}">
+    <span class="caption">{{ include.description }}</span>
+#+END_EXAMPLE
+
+Including the file:
+
+#+BEGIN_SRC sh
+    ---
+    layout: post
+    title: Image Caption Example
+    ---
+
+    \{\% include image.html file="img.jpg" description="Triangle_area_from_coordinates" \%\}
+#+END_SRC
+
+- [[https://www.kevinmcgillivray.net/captions-for-images-with-jekyll/][How
+  to Create Image Captions with Jekyll]]
+
+** Original Example
+
+You'll find this post in your =_posts= directory. Go ahead and edit it
+and re-build the site to see your changes. You can rebuild the site in
+many different ways, but the most common way is to run =jekyll serve=,
+which launches a web server and auto-regenerates your site when a file
+is updated.
+
+To add new posts, simply add a file in the =_posts= directory that
+follows the convention =YYYY-MM-DD-name-of-post.ext= and includes the
+necessary front matter. Take a look at the source for this post to get
+an idea about how it works.
+
+Jekyll also offers powerful support for code snippets:
+
+{% highlight ruby %} def print_hi(name) puts "Hi, #{name}" end
+print_hi('Tom') #=> prints 'Hi, Tom' to STDOUT. {% endhighlight %}
+
+Check out the [[https://jekyllrb.com/docs/home][Jekyll docs]] for more
+info on how to get the most out of Jekyll. File all bugs/feature
+requests at [[https://github.com/jekyll/jekyll][Jekyll's GitHub repo]].
+If you have questions, you can ask them on
+[[https://talk.jekyllrb.com/][Jekyll Talk]].
+** jekyll-toc
+ you can NOT use jekyll-toc powered by official GitHub Pages gem because available plugins are limited.
+
+Configuring Jekyll plugins - User Documentation
+
+To use jekyll-toc plugin, build your site locally and push it onto the gh-pages branch. I deployed my personal blog site in that way. The source code is open, so you can see how it works. https://github.com/toshimaru/blog.toshimaru.net
+** jekyll-table-of-contents
+[[https://github.com/ghiculescu/jekyll-table-of-contents][ghiculescu/jekyll-table-of-contents]]
+
+* Using org to Blog with Jekyll
+  [[https://orgmode.org/worg/org-tutorials/org-jekyll.html][Using org to Blog with Jekyll]]
+  [[https://github.com/ardumont/org2jekyll#setup][org2jekyll]]
+
+* Qiniu
+** Customize DNS
+1. 登陆 https://portal.qiniu.com/ (在国外访问特别慢)
+2. 对象存储 -> 融合CDN加速域名 -> 自定义域名 (eg. qiniu.yubaoliu.cn)
+3. 融合 CDN -> 域名管理 -> 复制CNAME
+4. 进入域名服务平台，台阿里云添加域名解析. 添加记录->  CNAME， 主机记录: qiniu, 记录值为: CNAME
+** Qshell
+- Download [[https://developer.qiniu.com/kodo/tools/1302/qshell][qshell]]
+- Doc: [[https://github.com/qiniu/qshell][qshell-qiniu]]
+
+
+- Add account
+#+begin_src sh
+qshell account [<AccessKey> <SecretKey> <Name>] [flags]
+#+end_src
+
+- Check account info:
+#+begin_src sh
+qshell account
+#+end_src
+
+#+begin_src sh
+$ ls ~/.qshell/
+account.db/       account.json      old_account.json
+#+end_src
+
+- Config upload.conf 
+#+begin_src 
+cat upload.conf 
+{
+    "src_dir": "/home/yubao/Pictures/qiniu_sync",
+    "ignore_dir": true,
+    "bucket": "yb_qiniu_images"
+}
+#+end_src
+
+- Sync Resource
+#+begin_example
+qshell qupload <LocalUploadConfig>
+#+end_example
+
+- Upload Image
+#+begin_src sh
+~/Pictures$ qshell fput yb_qiniu_images  virtual-keyboard.png  ~/Pictures/virtual-keyboard.png
+Uploading /home/yubao/Pictures/virtual-keyboard.png => yb_qiniu_images : virtual-keyboard.png ...
+Progress: 100%
+Put file /home/yubao/Pictures/virtual-keyboard.png => yb_qiniu_images : virtual-keyboard.png success!
+Hash: FsKboTAznJQx8J8FFjhU3XYWb1lU
+Fsize: 16757 ( 16.36 KB )
+MimeType: image/png
+Last time: 2.46 s, Average Speed: 6.8 KB/s
+#+end_src
+
+* Other Image Online Server
+
+** [[https://imgur.com/][imgur]]
+** [[https://sm.ms/login][sm.sm]]
+* Awesome Blogs
+- https://blog.toshimaru.net/

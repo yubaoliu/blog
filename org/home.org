@@ -1,0 +1,20 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: Quick Navigation
+#+DESCRIPTION: post
+#+TOC: true
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t
+#+DATE: 2019-09-03 火 19:20:01
+#+EXPORT_FILE_NAME: 2019-09-03-home.html
+
+* API Docs
+- [[https://learnxinyminutes.com/][Learn X in Y minutes]]
+
+* Useful Websites
+** Tools
+- [[https://audio.online-convert.com/][online-converter]]
+* Good Blogs
+- [[https://blog.csdn.net/zouxy09/article/details/14222605][zouxy09博客原创性博文导航]]

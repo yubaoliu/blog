@@ -1,0 +1,69 @@
+#+EXPORT_FILE_NAME: 2019-09-02-git.html
+#+TITLE: Git Config
+#+DATE: <2018-09-02 月>
+#+KEYWORDS: 
+#+SUBTITLE:
+#+TAGS:
+#+OPTIONS: H:3 num:t tags:t toc:t timestamps:t
+
+* Config
+#+begin_src bash
+git config --global core.editor "vim"
+#+end_src
+* Git Commands
+** Submodule
+*** Add
+  #+begin_src sh
+git submodule add https://github.com/RainerKuemmerle/g2o.git
+   #+end_src
+
+To remove a submodule you need to:
+
+- Delete the relevant section from the .gitmodules file.
+- Stage the .gitmodules changes git add .gitmodules
+- Delete the relevant section from .git/config.
+- Run git rm --cached path_to_submodule (no trailing slash).
+- Run rm -rf .git/modules/path_to_submodule (no trailing slash).
+- Commit git commit -m "Removed submodule "
+- Delete the now untracked submodule files rm -rf path_to_submodule
+*** recursive submodule
+#+begin_src 
+git submodule update --init --recursive
+#+end_src
+*** Deinit submodule
+#+begin_src bash
+git submodule deinit <path_to_submodule>
+git rm <path_to_submodule>
+git commit-m "Removed submodule "
+rm -rf .git/modules/<path_to_submodule>
+#+end_src
+** Garbage
+   #+begin_src 
+   git gc --prune=now
+   #+end_src
+
+* Bitbucket
+ Issue:
+ 
+ [Someone has already registered that SSH key](https://confluence.atlassian.com/bbkb/someone-has-already-registered-that-ssh-key-338365482.html)
+
+**Problem**
+
+When attempting to add a new SSH key in Bitbucket Cloud, you receive this error
+
+**Cause**
+
+The SSH key you have chosen has likely been registered by you at some point in the past or by a colleague on a team account.
+
+**Resolution**
+
+#+begin_example sh
+C:\Users\Yubao
+λ  ssh -T git@bitbucket.org
+authenticated via a deploy key.
+You can use git or hg to connect to Bitbucket. Shell access is disabled.
+This deploy key has read access to the following repositories:
+
+Yubao/lenovovoicemeeting: lenovo-yoga -- Yubao@DESKTOP-K0IBR00
+#+end_example
+
