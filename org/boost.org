@@ -68,7 +68,7 @@ Read: https://github.com/boostorg/boost/wiki/Getting-Started%3A-Overview
 #+begin_example sh
 git clone --recursive https://github.com/boostorg/boost.git
 cd boost
-git checkout develop # or whatever branch you want to use
+git checkout origin/develop # or whatever branch you want to use
 ./bootstrap.sh --prefix=<ABSOLUTE_INSTALL_PATH>
 ./b2 install
 #+end_example
@@ -455,7 +455,6 @@ int main(int argc, char *argv[])
 | a's | name: | a's    | value:    | 1 |
 | 1   |       |        |           |   |
 | i2  | is    | bigger |           |   |
-
 
 * Parallel Programming
 ** Boost.Thread 

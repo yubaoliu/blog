@@ -1,0 +1,39 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: slam
+#+TITLE: floatlazer/semantic_slam
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-07 土 11:52:38
+#+EXPORT_FILE_NAME: 2019-09-07-semantic_slam_floatlazer.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Demo
+#+begin_export html
+<iframe width="640" height="480"  src="//player.bilibili.com/player.html?aid=59793400&cid=116019490&page=13"  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+#+end_export
+
+https://github.com/yubaoliu/semantic_slam_floatlazer/blob/master/docs/images/overview.jpeg
+
+* Run TUM Dataset
+This /bag/ file will publish /\/tf/ topic. So I remap it to some other topics not used in this project.
+#+begin_example
+rosbag play --clock -l rgbd_dataset_freiburg3_walking_xyz.bag  /tf:=/tf_rosbag
+
+roslaunch slam_tmu.launch
+
+roslaunch semantic_mapping_tum.launch
+#+end_example
+* Build 
+#+begin_example
+git clone https://github.com/yubaoliu/semantic_slam_floatlazer.git
+#+end_example
+
+
+

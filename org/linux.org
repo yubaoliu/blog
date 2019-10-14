@@ -109,9 +109,14 @@ grive -a
 ** Dropbox
 echo "Install Dropbox"
 [安装 Dropbox 以最充分地利用您的帐户](https://www.dropbox.com/zh_CN/install-linux)
-
+#+begin_example
 cd ~/ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+#+end_example
 
+接着，从新建的 .dropbox-dist 文件夹运行 Dropbox 守护程序。
+#+begin_example
+~/.dropbox-dist/dropboxd
+#+end_example
 ** Mendeley
 echo "Install mendeley"
 wget -c https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
@@ -544,6 +549,48 @@ sudo apt update
 sudo apt install flatpak
 
 #+end_src
+* Video Editor
+[[https://linux.cn/article-10185-1.html][common vedio editors under linux]]
+- OpenShot
+- Shotcut
+- Flowblade
+- Lightworks
+- Blender
+- Cinelerra
+- DaVinci
+- VidCutter
+** kdenlive
+
+#+begin_example
+sudo add-apt-repository ppa:sunab/kdenlive-release
+sudo apt-get update
+sudo apt-get install kdenlive ladspa
+#+end_example
+** OpenShot
+#+begin_src sh
+sudo apt install openshot
+#+end_src
+** Flowblade
+#+begin_src sh
+sudo apt install flowblade
+#+end_src
+** VidCutter
+#+begin_src sh
+sudo add-apt-repository ppa:ozmartian/apps
+sudo apt-get update
+sudo apt-get install vidcutter
+#+end_src
+
+* Record Audio
+#+begin_example
+sudo add-apt-repository ppa:audio-recorder/ppa
+sudo apt-get update
+sudo apt-get install audio-recorder
+
+sudo apt-get install sox
+
+arecord filename.wav
+#+end_example
 * System Repairing
   #+begin_src bash
   apt autoremove
@@ -842,16 +889,6 @@ http://qiniu.yubaoliu.cn/input-keyboard.png
 
 Press /ESC/ to disable it.
 
-* Record Audio
-#+begin_example
-sudo add-apt-repository ppa:audio-recorder/ppa
-sudo apt-get update
-sudo apt-get install audio-recorder
-
-sudo apt-get install sox
-
-arecord filename.wav
-#+end_example
 * How to check package version installed
 #+BEGIN_SRC sh
     dpkg -s <packagename>

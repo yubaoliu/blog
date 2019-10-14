@@ -1,0 +1,43 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: project
+#+TITLE:  Patrol Robot Navigating and Automatically Mapping using Voice
+#+DESCRIPTION: Robot automatically mapping and navigation using voice recogniztion
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-04 水 09:27:10
+#+EXPORT_FILE_NAME: 2019-09-04-robot-voice-control.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Overview
+#+begin_export html
+<iframe width="640" height="480"  src="//player.bilibili.com/player.html?aid=66578892&cid=115537946&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+#+end_export
+
+* Build and  Run
+Get Sourece code:
+#+begin_example
+git clone https://github.com/yubaoliu/ros-pocketsphinx.git
+#+end_example
+
+RUN:
+
+#+begin_example
+rosrun sound_play soundplay_node.py
+
+roslaunch pocketsphinx voice_nav.launch
+#+end_example
+
+TURTLEBOT SIMULATOR:
+#+begin_example
+roslaunch turtlebot_gazebo turtlebot_world.launch
+#+end_example
+
+
+* Train Voice Module
+[[http://www.speech.cs.cmu.edu/tools/lmtool-new.html][Sphinx Knowledge Base Tool]]
+

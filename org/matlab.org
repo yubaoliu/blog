@@ -1,0 +1,23 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: Matlab
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-10-07 Mon 08:26:50
+#+EXPORT_FILE_NAME: 2019-10-07-matlab.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+
+* Repaire
+#+begin_example
+>>restoredefaultpath
+>>rehash toolboxcache
+>>savepath
+#+end_example

@@ -1,0 +1,153 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: blog
+#+TITLE: SLAM Sumarry
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-05 木 08:53:03
+#+EXPORT_FILE_NAME: 2019-09-05-slam.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Quick References
+- [[https://fzheng.me/2016/05/30/slam-review/][Brief Review on Visual SLAM: A Historical Perspective]]
+* Introduction
+** What is SLAM?
+SLAM: Simultaneous Localization and Mapping
+- Estimate the pose of a robot and the map of the environment at the same time
+- Localization: inferring location given a map
+- Mapping: inferring a map given locations
+- SLAM: learning a map and locating the robot simultaneously
+- Disadvantage: lack of semantic information
+
+SLAM是由“定位”（Localization)和“建图”（Mapping)两部分构成的。现在来看定位问题。
+这个问题可以用基于特征的方法（feature-based）或直接的方法（direct method）来解.
+
+[[https://i.imgur.com/mACMplo.png]]
+
+SLAM Algorithms
+
+ 帧间匹配算法
+
+-  ICP(Iterative Closest Point)
+-  PI-ICP(Point-to-Line Iterative 小象学院slam无人驾驶Closest Point)
+-  NDT(Normal Distribution Transfomation)
+-  CSM(Correlation Scan Match), 2008 ## 回环检测
+-  Scan-to-Scan
+-  Scan-to-Map
+-  Map-to-Map
+
+#+CAPTION: 两轮差速底盘的运动学模型
+[[https://i.imgur.com/JqjACFN.png]]
+
+** Rigid Assumption
+The assumption of scene rigidity is typical in SLAM algorithms. Such a strong assumption limits the use of most visual SLAM systems in populated real-world environ- ments, which are the target of several relevant applications like service service robotics or autonomous vehicles.\cite{Bescos2018}
+
+** Chalenges in Visual SLAM
+- Low-contrast; textureless image regions
+- occlusions
+- Violations of brightness constancy (e.g., specular reflections)
+- Really large baselines (foreshortening adn appearance change)
+- Camera calibration errors
+
+* RGBD SLAM
+- yubaoliu/rgbdslam_v2: git@github.com:yubaoliu/rgbdslam_v2.git
+* RTAB MAP
+- [[https://blog.51cto.com/remyspot/1784914][SLAM: RtabMap中文解析]]
+- [[http://introlab.github.io/rtabmap/][RTAB-Map-gitio]]
+- [[http://introlab.github.io/rtabmap/][RTAB-Map]]
+
+#+BEGIN_HTML
+  <iframe width="640" height="480" src="https://www.youtube.com/embed/AMLwjo80WzI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+#+END_HTML
+
+* GSLAM
+- [[https://github.com/zdzhaoyong/GSLAM][zdzhaoyong/GSLAM]]
+* SFM
+- sfm-github: https://github.com/topics/sfm
+* DynaSLAM
+** Introduction
+- Project: https://bertabescos.github.io/DynaSLAM/
+- [[https://github.com/BertaBescos/DynaSLAM.git][BertaBescos/DynaSLAM]]
+- [[https://blog.csdn.net/qq_38589460/article/details/86549662][CSDN ORB-SLAM2到dynaSLAM编译]]
+<iframe width="640" height="480" src="https://www.youtube.com/embed/EabI_goFmQs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+** Compile
+#+begin_src bash
+git clone https://github.com/BertaBescos/DynaSLAM.git
+cd DynaSLAM
+
+chmod +x build.sh
+./build.sh
+#+end_src
+** Paper
+Bescos, B., Facil, J. M., Civera, J., & Neira, J. (2018). DynaSLAM: Tracking, Mapping, and Inpainting in Dynamic Scenes. IEEE Robotics and Automation Letters, 3(4), 4076–4083. https://doi.org/10.1109/LRA.2018.2860039 \cite{Bescos2018}
+[[https://youtu.be/EabI_goFmQs][Youtube-demo]]
+** Abstract
+The assumption of scene rigidity is typical in SLAM algorithms. Such a strong assumption limits the use of most visual SLAM systems in populated real-world environ- ments, which are the target of several relevant applications like service service robotics or autonomous vehicles.
+
+In this paper we present DynaSLAM, a visual SLAM system
+that, building on ORB-SLAM2, adds the capabilities of 
+- dynamic object detection and 
+- background inpainting. 
+
+DynaSLAM is robust in dynamic scenarios for monocular, stereo and RGB-D configurations. 
+
+We are capable of detecting the moving objects either by multi-view geometry, deep learning or both. 
+
+**Inpainting**: **Having a static map of the scene** allows inpainting the frame background that has been occluded by such dynamic objects.
+
+** Notes
+第三部分我理解的是求基础矩阵用了ransac，所以基础矩阵更符合静态点的运动模型。当前点离这个基础矩阵计算出的极线越远就说明动态效果越大
+* RDSLAM
+- [[http://www.zjucvg.net/rdslam/rdslam.html][RDSLAM: Robust Dynamic SLAM]]
+* Mask-SLAM
+** Paper
+Kaneko, M., Iwami, K., Ogawa, T., Yamasaki, T., & Aizawa, K. (2018). Mask-SLAM: Robust feature-based monocular SLAM by masking using semantic segmentation. IEEE Computer Society Conference on Computer Vision and Pattern Recognition Workshops, 2018-June, 371–379. https://doi.org/10.1109/CVPRW.2018.00063
+* SOURCE CODE
+- zssjh/semantic_slam: https://github.com/zssjh/semantic_slam.git
+ ORB-SLAM2 combined with yolov3 object detection, considering the relationship among objects
+- 
+
+* ORB_SLAM2_SSD_Semantic
+- [[https://github.com/Ewenwan/ORB_SLAM2_SSD_Semantic][Ewenwan/ORB_SLAM2_SSD_Semantic]]
+* Visual-Inertial (VIO)
+** Common VIO Solutions
+
+#+CAPTION: common vio solutions
+[fn:1]
+http://qiniu.yubaoliu.cn/vio-solutions-compare.png 
+** Variables of Interest and dynamical model
+
+
+
+** References
+- [[https://blog.csdn.net/wangshuailpp/article/details/78461171][VINS技术路线与代码详解]]
+
+* Useful tools for the RGB-D benchmark
+- https://vision.in.tum.de/data/datasets/rgbd-dataset/tools#evaluation
+** ABSOLUTE TRAJECTORY ERROR (ATE)
+** RELATIVE POSE ERROR (RPE)
+** Generating a point cloud from images
+#+begin_example
+usage: generate_pointcloud.py [-h] rgb_file depth_file ply_file
+
+This script reads a registered pair of color and depth images and generates a
+colored 3D point cloud in the PLY format.
+
+positional arguments:
+  rgb_file    input color image (format: png)
+  depth_file  input depth image (format: png)
+  ply_file    output PLY file (format: ply)
+
+optional arguments:
+  -h, --help  show this help message and exit
+#+end_example
+
+* Footnotes
+
+[fn:1] https://www.bilibili.com/video/av44472237?from=search&seid=15063536043439842457 

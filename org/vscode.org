@@ -1,0 +1,31 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: tools
+#+TITLE: vscode
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-05 木 12:05:50
+#+EXPORT_FILE_NAME: 2019-09-05-vscode.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Degug
+** How to debug use cmake
+press C+F5
+** How to pass args to cmake debug
+ I was able to pass arguments to a debug target using cmake.debugConfig adding a settings.json file inside .vscode folder with this content:
+
+ #+begin_src 
+{ 
+    "cmake.debugConfig": {
+        "args": [
+            "myFirstArgument"
+        ]
+    }
+}
+ #+end_src

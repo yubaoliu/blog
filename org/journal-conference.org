@@ -1,0 +1,29 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: 
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-06 金 17:46:45
+#+EXPORT_FILE_NAME: 2019-09-06-journal-conference.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Google Scholar Journal and Conference list 
+[[https://scholar.google.com/citations?view_op=top_venues&hl=zh-CN&vq=eng][google-metrics]]
+
+
+
+* Latex Template
+[[https://www.overleaf.com/articles][Overleaf latex template]]: resume, articles and conferences
+
+* Conferences 
+- European Conference on Mobile Robots
+
+* Journal
+- IPSJ Transactions on Computer Vision and Applications

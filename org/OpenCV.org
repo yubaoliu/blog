@@ -1,0 +1,318 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: Computer Vison
+#+TITLE: OpenCV
+#+DESCRIPTION: post
+#+TAGS: opencv
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-25 水 20:16:42
+#+EXPORT_FILE_NAME: 2019-09-25-OpenCV.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Development
+** Data type in Mat
+For /rgb/, /depth/ and pixel-wise segmentation /label/ image:
+#+begin_src cpp
+rgb: 480x640x3 type: 16
+depth: 480x640x1 type:2
+label: 480x640x1 type:0
+#+end_src
+
+
+A Mapping of Type to Numbers in OpenCV[fn:1]:
+
+| Type   | C1 | C2 | C3 | C4 |
+| CV_8U  |  0 |  8 | 16 | 24 |
+| CV_8S  |  1 |  9 | 17 | 25 |
+| CV_16U |  2 | 10 | 18 | 26 |
+| CV_16S |  3 | 11 | 19 | 27 |
+| CV_32S |  4 | 12 | 20 | 28 |
+| CV_32F |  5 | 13 | 21 | 29 |
+| CV_64F |  6 | 14 | 22 | 30 |
+
+#+begin_example
+Unsigned 8bits uchar 0~255
+IplImage: IPL_DEPTH_8U
+Mat: CV_8UC1, CV_8UC2, CV_8UC3, CV_8UC4
+
+Signed 8bits char -128~127
+IplImage: IPL_DEPTH_8S
+Mat: CV_8SC1，CV_8SC2，CV_8SC3，CV_8SC4
+
+Unsigned 16bits ushort 0~65535
+IplImage: IPL_DEPTH_16U
+Mat: CV_16UC1，CV_16UC2，CV_16UC3，CV_16UC4
+
+Signed 16bits short -32768~32767
+IplImage: IPL_DEPTH_16S
+Mat: CV_16SC1，CV_16SC2，CV_16SC3，CV_16SC4
+
+Signed 32bits int -2147483648~2147483647
+IplImage: IPL_DEPTH_32S
+Mat: CV_32SC1，CV_32SC2，CV_32SC3，CV_32SC4
+
+Float 32bits float -1.18*10-38~3.40*10-38 
+IplImage: IPL_DEPTH_32F
+Mat: CV_32FC1，CV_32FC2，CV_32FC3，CV_32FC4
+
+Double 64bits double 
+Mat: CV_64FC1，CV_64FC2，CV_64FC3，CV_64FC4
+
+Unsigned 1bit bool
+IplImage: IPL_DEPTH_1U
+#+end_example
+
+| type   | C1     | C2        | C3        | C4        | C6        |
+| uchar  | uchar  | cv::Vec2b | cv::Vec3b | cv::Vec4b |           |
+| short  | short  | cv::Vec2s | cv::Vec3s | cv::Vec4s |           |
+| int    | int    | cv::Vec2i | cv::Vec3i | cv::Vec4i |           |
+| float  | float  | cv::Vec2f | cv::Vec3f | cv::Vec4f | cv::Vec6f |
+| double | double | cv::Vec2d | cv::Vec3d | cv::Vec4d | cv::Vec6d |
+
+How to use[fn:2]:
+#+begin_src cpp
+  cv::Vec3b vec3b = img.at<cv::Vec3b>(0,0);
+    uchar vec3b0 = img.at<cv::Vec3b>(0,0)[0];
+    uchar vec3b1 = img.at<cv::Vec3b>(0,0)[1];
+    uchar vec3b2 = img.at<cv::Vec3b>(0,0)[2];
+    std::cout<<"vec3b = "<<vec3b<<std::endl;
+    std::cout<<"vec3b0 = "<<(int)vec3b0<<std::endl;
+    std::cout<<"vec3b1 = "<<(int)vec3b1<<std::endl;
+    std::cout<<"vec3b2 = "<<(int)vec3b2<<std::endl;
+#+end_src
+
+* Overview
+[[https://opencv.org/][opencv_org]]
+[[https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html][OpenCV-Python
+Tutorials]]
+
+*Note*: Before compile OpenCV from source code, remove //anaconda2/bin/
+from PATH under the current terminal
+
+* Installing OpenCV-Python from Pre-built Binaries
+  :PROPERTIES:
+  :CUSTOM_ID: installing-opencv-python-from-pre-built-binaries
+  :END:
+
+Install package
+[[https://packages.ubuntu.com/trusty/python-opencv][python-opencv]] with
+following command in terminal (as root user).
+
+=$ sudo apt-get install python-opencv=
+
+if you are on linux you can do :
+
+#+BEGIN_SRC sh
+    pip install opencv-python
+#+END_SRC
+
+or
+
+#+BEGIN_SRC sh
+    conda install opencv
+#+END_SRC
+
+Open Python IDLE (or IPython) and type following codes in Python
+terminal.
+
+#+BEGIN_SRC python
+    >>> import cv2
+    >>> print cv2.__version__
+    3.4.3
+#+END_SRC
+
+* Building OpenCV from source
+  :PROPERTIES:
+  :CUSTOM_ID: building-opencv-from-source
+  :END:
+
+##Required build dependencies We need CMake to configure the
+installation, GCC for compilation, Python-devel and Numpy for building
+Python bindings etc.
+
+#+BEGIN_SRC sh
+    sudo apt-get install cmake
+    sudo apt-get install python-devel numpy
+    sudo apt-get install gcc gcc-c++
+#+END_SRC
+
+Next we need GTK support for GUI features, Camera support (libv4l),
+Media Support (ffmpeg, gstreamer) etc.
+
+#+BEGIN_SRC sh
+    sudo apt-get install gtk2-devel
+    sudo apt-get install libv4l-devel
+    sudo apt-get install ffmpeg-devel
+    sudo apt-get install gstreamer-plugins-base-devel
+#+END_SRC
+
+*Optional Dependencies*
+
+Above dependencies are sufficient to install OpenCV in your Ubuntu
+machine. But depending upon your requirements, you may need some extra
+dependencies. A list of such optional dependencies are given below. You
+can either leave it or install it, your call :)
+
+OpenCV comes with supporting files for image formats like PNG, JPEG,
+JPEG2000, TIFF, WebP etc. But it may be a little old. If you want to get
+latest libraries, you can install development files for system libraries
+of these formats.
+
+#+BEGIN_SRC sh
+    sudo apt-get install libpng-devel
+    sudo apt-get install libjpeg-turbo-devel
+    sudo apt-get install jasper-devel
+    sudo apt-get install openexr-devel
+    sudo apt-get install libtiff-devel
+    sudo apt-get install libwebp-devel
+#+END_SRC
+
+** Downloading OpenCV
+   :PROPERTIES:
+   :CUSTOM_ID: downloading-opencv
+   :END:
+
+*Reference:*
+
+- https://docs.opencv.org/3.4.1/d2/de6/tutorial_py_setup_in_ubuntu.html
+
+To download the latest source from OpenCV's
+[[https://github.com/opencv/opencv][GitHub Repository]]. (If you want to
+contribute to OpenCV choose this. For that, you need to install *Git*
+first)
+
+#+BEGIN_SRC sh
+    $ sudo apt-get install git
+    $ git clone https://github.com/opencv/opencv.git
+#+END_SRC
+
+It will create a folder "opencv" in current directory. The cloning may
+take some time depending upon your internet connection.
+
+##Configuring and Installing Now open a terminal window and navigate to
+the downloaded "opencv" folder. Create a new "build" folder and navigate
+to it.
+
+#+BEGIN_SRC sh
+    $ mkdir build
+    $ cd build
+    $ cmake ../
+#+END_SRC
+
+Now you build the files using "make" command and install it using "make
+install" command.
+
+#+BEGIN_SRC sh
+    $ make
+    $sudo make install
+#+END_SRC
+
+Installation is over. All files are installed in "/usr/local/" folder.
+Open a terminal and try import "cv2".
+
+#+BEGIN_SRC C++
+    import cv2 as cv
+    print(cv.__version__)
+#+END_SRC
+
+* Common Questions
+  :PROPERTIES:
+  :CUSTOM_ID: common-questions
+  :END:
+
+- Environment:
+
+  - conda
+  - Jupyter
+
+** problom: GTK+
+   :PROPERTIES:
+   :CUSTOM_ID: problom-gtk
+   :END:
+
+- *Problem Description*
+
+I encounterred this problom and it took me many days to solve it.
+
+#+CAPTION: read image example use cv2
+[[file:images/Anaconda/Error_OpenCV_imshow_gtk2x.png]]
+
+/This is the source code/:
+
+#+BEGIN_SRC python
+    import cv2
+
+    img = cv2.imread('test.png',0) # 0: gray; 1: color
+
+    cv2.imshow('Image',img) # para 1: window name
+
+    cv2.waitKey(0)
+
+    ​**Results**:
+    ---------------------------------------------------------------------------
+    error                                     Traceback (most recent call last)
+    <ipython-input-2-55233ffdf5b9> in <module>
+          1 import cv2
+          2 img = cv2.imread('test.png',0) # 0: gray; 1: color
+    ----> 3 cv2.imshow('Image',img) # para 1: window name
+          4 cv2.waitKey(0)
+
+    error: OpenCV(3.4.2) /tmp/build/80754af9/opencv-suite_1535558553474/work/modules/highgui/src/window.cpp:632: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Carbon support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+#+END_SRC
+
+- *Solutions:*
+
+#+BEGIN_SRC sh
+    conda install -c menpo opencv3
+#+END_SRC
+
+These articles give a possible solution: 1.
+https://anaconda.org/menpo/opencv3 1.
+https://blog.csdn.net/flyyufenfei/article/details/79192330 2.
+https://groups.google.com/a/continuum.io/forum/#!topic/anaconda/uHB2wYT29vU
+
+** Problem with robots
+   :PROPERTIES:
+   :CUSTOM_ID: problem-with-robots
+   :END:
+
+- **Problem Description*
+
+#+CAPTION: Error due to ROS
+[[file:images/2018/12/error-due-to-ros.png]]
+
+#+BEGIN_SRC sh
+    (TensorflowPy36) yubao@yubao-Z370M-S01:~/GitProject/AI/Source/Tensorflow$ python ImageRead.py
+    Traceback (most recent call last):
+      File "ImageRead.py", line 2, in <module>
+        import cv2
+    ImportError: /opt/ros/kinetic/lib/python2.7/dist-packages/cv2.so: undefined symbol: PyCObject_Type
+#+END_SRC
+
+- *Solutions*
+
+#+BEGIN_SRC sh
+    $ vim ~/.bashrc
+#+END_SRC
+
+comment this line:
+
+#+BEGIN_SRC sh
+    #source /opt/ros/kinetic/setup.bash
+#+END_SRC
+
+* Reference
+- 2015-04-30-确定 OpenCV 矩阵元素的数据类型, https://www.jianshu.com/p/204f292937bb
+
+* Footnotes
+
+[fn:2] https://www.jianshu.com/p/204f292937bb 
+
+[fn:1] http://ninghang.blogspot.com/ 
+
+

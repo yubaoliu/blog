@@ -7,8 +7,9 @@
 #+CATEGORIES: tools
 #+DATE: 2019-09-03 火 14:21:55
 #+DESCRIPTION: post
-#+TOC: true
+#+TOC: nil
 #+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t
+#+TOC: headlines 3
 
 * Jekyll
 ** Important Notes
@@ -42,7 +43,7 @@
     source ~/.bashrc
 #+END_SRC
 
-- Run server
+** Run server
 
 #+begin_export 
 bundle exec jekyll serve
@@ -258,8 +259,12 @@ Last time: 2.46 s, Average Speed: 6.8 KB/s
 #+end_src
 
 * Other Image Online Server
-
 ** [[https://imgur.com/][imgur]]
 ** [[https://sm.ms/login][sm.sm]]
 * Awesome Blogs
 - https://blog.toshimaru.net/
+* Common Issues
+** Image relative path issue
+- http://cn.voidcc.com/question/p-himmwgoj-bbz.html
+- https://www.mfoot.com/blog/2015/11/17/using-org-mode-to-write-jekyll-blogs/
+

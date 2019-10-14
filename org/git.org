@@ -5,11 +5,57 @@
 #+SUBTITLE:
 #+TAGS:
 #+OPTIONS: H:3 num:t tags:t toc:t timestamps:t
+* Crate Repo
+Command line instructions
+You can also upload existing files from your computer using the instructions below.
+#+begin_example
+Git global setup
+git config --global user.name "Liu Yu Bao"
+git config --global user.email "liu@aisl.cs.tut.ac.jp"
+#+end_example
+
+Create a new repository
+
+#+begin_example
+git clone <REPO>
+cd mapping-via-attending-robot
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+#+end_example
+
+Push an existing folder
+#+begin_example
+cd existing_folder
+git init
+git remote add origin <REPO>
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+#+end_example
+
+Push an existing Git repository
+#+begin_example
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin <REPO>
+git push -u origin --all
+git push -u origin --tags
+#+end_example
 
 * Config
 #+begin_src bash
 git config --global core.editor "vim"
 #+end_src
+* branch
+#+begin_example
+git checkout --orphan('孤儿‘) gh-pagesx
+
+git checkout --track origin/serverfix
+ 
+git checkout -b serverfix origin/serverfix
+#+end_example
 * Git Commands
 ** Submodule
 *** Add

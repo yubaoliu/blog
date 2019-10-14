@@ -1,0 +1,36 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: mvg
+#+TITLE: Multiveiw Geometry
+#+DESCRIPTION: post
+#+TAGS: mvg
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-24 火 14:33:40
+#+EXPORT_FILE_NAME: 2019-09-24-mvg.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Pinhole Camera Model
+** Resource
+- https://www.comp.nus.edu.sg/~cs4243/lecture/camera.pdf
+** Introduction
+[[post:eye.png]] [fn:1]
+[[post:camera_eye.png]] [fn:1]
+[[post:pinhole_camera_geometry.png]]
+[[post:pinhole_camera_model_2.png]] [fn:1]
+
+** 3D reconstruction
+For RGBD camera, the pixel is defined by $(u, v, d)$, where $d$ is measured by depth camera. Then 3D point in camera frame is
+$$Z=d/s$$ 
+$s$ is the scale factor of the depth value measured and the real depth in the world. It's unit usually is $mm$ and its value is set to $1000$ by default.
+$$X=(u-c_x)Z/f_x$$
+$$Y=(v-C_y)Z/f_y$$
+
+For detail, refer book of MVG page 155 or cs4243[fn:1].
+* Footnotes
+
+[fn:1] https://www.comp.nus.edu.sg/~cs4243/lecture/camera.pdf 

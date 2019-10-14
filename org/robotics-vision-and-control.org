@@ -1,0 +1,125 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: robotics
+#+TITLE: Robotics, Vision and Control
+#+DESCRIPTION: post
+#+TAGS: robotics
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-22 日 07:48:08
+#+EXPORT_FILE_NAME: 2019-09-22-robotics-vision-and-control.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Tutorial
+[[http://petercorke.com/wordpress/resources/moocs][MOOCs]]
+- Introducing Robotics, a program of 3 courses over 11 weeks.  Covers the 2D case only, skipping the 3D case where rotation is relatively complex to explain.
+- Robot Vision, a program of 3 courses over 10 weeks
+* Install
+** Robotics Toolbox
+- http://petercorke.com/wordpress/toolboxes/robotics-toolbox
+- https://github.com/petercorke/machinevision-toolbox-matlab
+
+** Install From Source Code: MVTB, RTB
+- spatial-math 
+- toolbox-common-matlab
+- Robot toolbox (RTB)
+- Machine Vision Toolbox (MVTB)
+
+#+begin_example
+mkdir rvctools
+cd rvctools
+git clone https://github.com/petercorke/robotics-toolbox-matlab.git robot
+git clone https://github.com/petercorke/machinevision-toolbox-matlab.git vision
+git clone https://github.com/petercorke/spatial-math.git smtb
+git clone https://github.com/petercorke/toolbox-common-matlab.git common
+make -C vision
+make -C robot
+
+#+end_example
+
+Build Mex file from Matlab
+#+begin_example
+>> addpath rvctools/common  %  rvctools is the same folder as above
+>> startup_rvc
+
+#+end_example
+** Downloading the example images
+#+begin_example
+cd rvctools/vision
+wget petercorke.com/files/MVTB/images-RVC2b.zip
+unzip images-RVC2b
+#+end_example
+** vlfeat
+http://www.vlfeat.org/install-matlab.html
+** EPnP: Efficient Perspective-n-Point Camera Pose Estimation
+https://www.epfl.ch/labs/cvlab/software/multi-view-stereo/epnp/
+** Camera Calibration Toolbox for Matlab
+http://www.vision.caltech.edu/bouguetj/calib_doc/
+** Graph Based Image Segmentation
+http://cs.brown.edu/people/pfelzens/segment/
+
+
+* Python Function
+** se2
+#+begin_src python
+import math
+import numpy as np
+def se2(a, b, c):
+    cth = math.cos(c)
+    sth = math.sin(c)
+    R = np.array([[cth, -sth, a],
+                  [sth, cth, b],
+                  [0, 0, 1]])
+    return R
+
+print(se2(1, 2, math.pi/6))
+#+end_src
+** skew
+#+begin_src python
+import numpy
+def skew(v):
+    if len(v) == 3:
+        S = numpy.array([[0, -v[2], v[1]],
+                         [v[2], 0, -v[0]],
+                         [-v[1], v[0], 0]])
+    elif len(v) == 1:
+        S = numpy.array([[0, -v[0]], [v[0], 0]])
+    else:
+        return("argument must be a 1 or 3 vector")
+    return S
+
+print(skew([1, 2, 3]))
+#+end_src
+** vex
+#+begin_src python
+import numpy as np
+def vex(L):
+    S = np.array(L)
+    if S.shape[0] == 3 and S.shape[1] == 3:
+        v = [0.5*(S[2, 1]-S[1, 2]), 0.5*(S[0, 2]-S[2, 0]), 0.5*(S[1, 0]-S[0, 1])]
+    elif S.shape[0] == 2 and S.shape[1] == 2:
+        v = 0.5*[S[1, 0]-S[0, 1]]
+    else:
+        return("RTB:vex:badarg, argument must 2x2 or 3x3 matrix")
+    return v
+print(vex([[0, -3, 2], [3, 0, -1], [-2, 1, 0]]))
+#+end_src
+* Errors
+** isurf-closest
+#+begin_example matlab
+>> m = sf1.match(sf2);
+Attempt to execute SCRIPT closest as a function:
+/home/yubao/MATLAB Add-Ons/Toolboxes/Machine Vision Toolbox for MATLAB/vision/closest.m
+
+Error in SurfPointFeature/match (line 122)
+            [cor2,err] = closest(D1, D2)
+#+end_example
+
+If you have the MATLAB compiler available then this can be used to compile bottleneck functions.  Some particularly compute intensive functions are provided as mex-files and may need to be compiled for the particular platform.  
+
+
+

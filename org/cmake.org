@@ -1,0 +1,226 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: cmake
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-05 木 11:58:26
+#+EXPORT_FILE_NAME: 2019-09-05-cmake.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Example
+
+#+BEGIN_SRC sh :tangle CMakeLists.txt
+cmake_minimum_required(VERSION 3.0)
+project( DEMO )
+
+file(GLOB sources "source/*.cpp")
+file(GLOB headers "header/*.h")
+
+include_directories(header)
+
+add_library(${PROJECT_NAME}  SHARED ${sources} )
+
+find_package(Eigen3 REQUIRED NO_MODULE)
+
+
+target_link_libraries(${PROJECT_NAME} Eigen3::Eigen )
+
+
+install(TARGETS ${PROJECT_NAME} DESTINATION "${CMAKE_SOURCE_DIR}/../Assets/plugins")
+
+install(FILES ${headers} DESTINATION  "${CMAKE_SOURCE_DIR}/../Assets/plugins/include")
+
+set(CMAKE_CXX_FLAGS /bigobj)
+
+add_executable(${PROJECT_NAME}  ${sources} ${headers})
+
+#+END_SRC
+Use *C-c C-v t* or *M-x org-babel-tangle* to extract this file.
+
+* Boost
+#+begin_example
+find_package(Boost REQUIRED COMPONENTS thread)
+ ${Boost_INCLUDE_DIRS}
+ ${Boost_LIBRARIES}
+#+end_example
+* Cuda
+#+begin_example
+# Find CUDA
+find_package(CUDA QUIET)
+if (CUDA_FOUND)
+  find_package(CUDA REQUIRED)
+  message(STATUS "CUDA Version: ${CUDA_VERSION_STRINGS}")
+  message(STATUS "CUDA Libararies: ${CUDA_LIBRARIES}")
+  add_definitions(-DGPU)
+else()
+  list(APPEND LIBRARIES "m")
+endif()
+#+end_example
+* Eigen
+Set Eigen3_DIR in $PATH
+#+BEGIN_SRC sh
+find_package(Eigen3 REQUIRED NO_MODULE)
+target_link_libraries(${PROJECT_NAME} Eigen3::Eigen )
+#+END_SRC
+* OpenCV
+#+BEGIN_SRC sh
+find_package( OpenCV REQUIRED )
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
+#+END_SRC
+#+BEGIN_SRC sh :tangle CMakeLists.txt
+cmake_minimum_required(VERSION 2.8)
+project( DisplayImage )
+find_package( OpenCV REQUIRED )
+add_executable( DisplayImage DisplayImage.cpp )
+target_link_libraries( DisplayImage ${OpenCV_LIBS} )
+#+END_SRC
+
+#+end_example
+* X11
+#+begin_example
+# Find X11
+message ( STATUS "Searching for X11..." )
+find_package ( X11 REQUIRED )
+if ( X11_FOUND )
+  include_directories ( ${X11_INCLUDE_DIR} )
+  link_libraries ( ${X11_LIBRARIES} )
+  message ( STATUS " X11_INCLUDE_DIR: " ${X11_INCLUDE_DIR} )
+  message ( STATUS " X11_LIBRARIES: " ${X11_LIBRARIES} )
+endif ( X11_FOUND )
+#+end_example
+* Overview
+- [[https://www.johnlamp.net/cmake-tutorial-1-getting-started.html#DownloadAndInstall1][cmake-tutorial-1-getting-started]]
+
+* Install
+
+Download the disk image from the CMake
+[[http://www.cmake.org/cmake/resources/software.html][website]]. Pick
+the correct download for whichever version of OS X you are using. Use
+the installer and follow its directions. It will ask if you want it to
+make the command line tools available in your path by creating symbolic
+links, have it do so.
+
+This provides the =cmake= command, the CMake GUI (=CMake.app=), and the
+curses interface (=ccmake=).
+
+** Homebrew
+
+If you already have homebrew installed you can simply install CMake with
+the command brew install cmake.
+
+This provides the =cmake= command and the curses interface (=ccmake=)
+but *not* the CMake GUI.
+
+
+** Ubuntu (Debian)
+
+The simplest way to install CMake is via the command line:
+
+​ =sudo apt-get install cmake cmake-qt-gui=
+
+If your Ubuntu install doesn't include X or you primarily use ssh
+sessions you will also want to install the =cmake-curses-gui= package.
+Again this is simplest with the command
+
+​ =sudo apt-get install cmake-curses-gui=,
+
+but either GUI interface can be used instead.
+
+This provides the =cmake= command and the CMake GUI (=cmake-gui=). The
+second, optional, package provides the curses interface (=ccmake=).
+
+*ccmake ncurses*
+
+#+BEGIN_EXAMPLE
+    sudo apt-get install cmake-curses-gui
+    ccmake ..
+#+END_EXAMPLE
+
+[[https://stackoverflow.com/question/16851084/how-to-list-all-cmake-build-option-and-their-default-values][shows]]:
+
+#+CAPTION: img
+[[https://i.stack.imgur.com/ohmjl.png]]
+
+* Eigen
+  #+begin_src bash
+  find_package(cmake_modules REQUIRED)
+  find_package(Eigen3 REQUIRED)
+  include_directories(${EIGEN3_INCLUDE_DIR})
+  add_definitions(${EIGEN_DEFINITIONS})
+  #+end_src
+* PCL
+#+begin_src bash
+cmake_minimum_required(VERSION2.8 FATAL_ERROR)
+project(project_name)
+find_package(PCL 1.8 REQUIRED)
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+add_executable (project_name cloud_viewer_PointXYZ.cpp) #注意这里不能替换
+target_link_libraries(project_name ${PCL_LIBRARIES})
+#+end_src
+
+* OpenCV
+#+begin_src bash
+cmake_minimum_required(VERSION 2.8)
+project(image)
+set(CMAKE_CXX_FLAGS   "-std=c++11")
+find_package(OpenCV  REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS}) #not need if CMake >=2.8.1
+add_executable(image image.cpp)
+target_link_libraries(image ${OpenCV_LIBS})
+#+end_src
+
+ # @par 1. Setup
+ #
+ # The following variables are optionally searched for defaults
+ #  OpenCV_DIR:            Base directory of OpenCv tree to use.
+ #
+ # @par 2. Variable
+ #
+ # The following are set after configuration is done: 
+ # - OpenCV_FOUND
+ # - OpenCV_LIBS
+ # - OpenCV_INCLUDE_DIR
+ # - OpenCV_VERSION (OpenCV_VERSION_MAJOR, OpenCV_VERSION_MINOR, OpenCV_VERSION_PATCH)
+
+* How to
+** Upgrade Cmake
+
+Refer: [[https://answers.ros.org/question/293119/how-can-i-updateremove-cmake-without-partially-deleting-my-ros-distribution/][How can I update/remove cmake without partially deleting my ROS distribution?]]
+
+Solution in this link:
+#+begin_src bash
+cd ~/Downloads/cmake-3.12.0-rc3/   # or wherever you downloaded cmake
+./bootstrap --prefix=$HOME/cmake-install
+make 
+make install
+export PATH=$HOME/cmake-install/bin:$PATH
+export CMAKE_PREFIX_PATH=$HOME/cmake-install:$CMAKE_PREFIX_PATH
+#+end_src
+
+My solution:
+
+#+begin_src bash
+git clone https://github.com/Kitware/CMake.git
+mkdir build
+cd build
+cmake ..
+sudo make install
+#+end_src
+
+And then modify the environment.
+#+begin_src bash
+export PATH=/usr/local/bin:$PATH
+export CMAKE_PREFIX_PATH=/usr/local:$CMAKE_PREFIX_PATH
+#+end_src
+
+Next use ``cmake --version`` to test
+

@@ -1,0 +1,77 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: project
+#+TITLE:  Openpose
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-11 水 12:34:09
+#+EXPORT_FILE_NAME: 2019-09-11-openpose.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* RUN
+** Modify model path
+#+begin_example
+vim _ros/src/gflags_options.cpp
+#+end_example
+
+#+begin_src cpp
+DEFINE_string(model_folder,             "/path/to/openpose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
+#+end_src
+** Kinect Camera
+1. Modify launch file /openpose_ros_kinect.launch/
+   
+#+begin_src cpp
+<param name="image_topic"                value="/kinect2/qhd/image_color" />
+#+end_src
+
+2. start
+#+begin_example
+roslaunch openpose_ros openpose_ros_kinect.launch
+rosrun kinect2_bridge kinect2_bridge
+#+end_example
+
+** USB Web Camera
+#+begin_example
+ <param name="image_topic"                value="/usb_cam/image_raw" />
+#+end_example
+
+#+begin_example
+roslaunch openpose_ros openpose_ros.launch
+rosrun  usb_cam usb_cam_node
+#+end_example
+** TUM RGBD Dataset
+
+#+begin_example
+<param name="image_topic"                value="/camera/rgb/image_color" />
+
+roslaunch openpose_ros openpose_ros_tum.launch
+ 
+rosbag play --clock -l rgbd_dataset_freiburg3_walking_xyz.bag
+#+end_example
+
+Demo:
+
+#+begin_export html
+<iframe width="640" height="480"  src="//player.bilibili.com/player.html?aid=59793400&cid=112260004&page=10"  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+#+end_export
+
+* Build and Install
+** Compile Openpose
+#+begin_example
+git clone https://github.com/yubaoliu/openpose.git
+
+#+end_example
+
+** Ros wrapper
+#+begin_example
+cd catkin_ws/
+git clone https://github.com/yubaoliu/openpose_ros.git
+#+end_example
+* Others
+- reigngt09/Pose-Estimation,  https://github.com/reigngt09/Pose-Estimation.git

@@ -1,10 +1,31 @@
-#+EXPORT_FILE_NAME: 2018-01-01-english.org
-#+TITLE: English Notes
-#+DATE:  <2019-09-02 月>
-#+KEYWORDS: 
-#+SUBTITLE:
-#+TAGS:
-#+OPTIONS: H:3 num:t tags:t toc:t timestamps:t
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: languages
+#+TITLE: English Study
+#+DESCRIPTION: post
+#+TAGS: english
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-22 日 08:38:16
+#+EXPORT_FILE_NAME: 2019-09-22-english.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
 
+* Words
+** fringe
+- Edge
+  
+We are on the fringes of Lie group theory which we will encounter throughout this chapter.
+** intriguingly
+- In a way that is very interesting because of being unusual or mysterious
 
-PI of AISL: PI stands for principal investigator
+The result is a simple matrix with two elements having a magnitude of 0.3, which intriguingly is the original rotation angle.
+** tangible
+
+To make this more tangible we will show some numerical examples using Matlab and the Toolbox.
+* Notes
+- PI of AISL: PI stands for principal investigator
+

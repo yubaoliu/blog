@@ -1,0 +1,40 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: paper
+#+TITLE: "DynaSLAM Tracking, Mapping, and Inpainting in Dynamic Scenes"
+#+DESCRIPTION: post
+#+TAGS: DynaSLAM
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-13 金 06:38:22
+#+EXPORT_FILE_NAME: 2019-09-13-DynaSLAM.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Problem Defination
+The assumption of **scene rigidity** is typical in
+SLAM algorithms. Such a strong assumption limits the use of most visual SLAM systems in populated real-world environ- ments, which are the target of several relevant applications like service robotics or autonomous vehicles.
+
+* Proposial
+In this paper we present DynaSLAM, a visual SLAM system
+that, building on ORB-SLAM2 [1], adds the capabilities of dy- namic object detection and background inpainting. DynaSLAM is robust in dynamic scenarios for monocular, stereo and RGB-D configurations. We are capable of detecting the moving objects either by multi-view geometry, deep learning or both. Having a static map of the scene allows inpainting the frame background that has been occluded by such dynamic objects.
+
+* Experiment
+- RGB-D datasets
+- estimates a map of the static parts of the scene
+
+* Disadvantages
+After the potentially dynamic content has been segmented,
+the pose of the camera is tracked **using the static part of the image**. Because the segment contours usually become high- gradient areas, salient point features tend to appear. We do not consider the features in such contour areas.
+
+
+Only use static parts segmented to tracking. The number of features may be not enough to do tracking.
+
+
+
+
+
+

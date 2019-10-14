@@ -1,8 +1,18 @@
-#+EXPORT_FILE_NAME: 2019-08-27-hdlslam.html
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: slam
 #+TITLE: HDL SLAM Series
-#+KEYWORDS: 
-#+OPTIONS: body-only:t
-#+subtitle: 
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-05 木 08:43:04
+#+EXPORT_FILE_NAME: 2019-09-05-hdl-slam.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
 
 * HDL_GRAPH_SLAM
 ** launch

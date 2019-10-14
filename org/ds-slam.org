@@ -1,0 +1,44 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: paper
+#+TITLE: DS SLAM SIMULATION
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-06 金 10:34:09
+#+EXPORT_FILE_NAME: 2019-09-06-ds-slam.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Demo
+#+begin_export html
+<iframe width="640" height="480"  src="//player.bilibili.com/player.html?aid=59793400&cid=108593582&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+#+end_export
+
+* Run TMU RGBD Dataset
+#+begin_example
+cd DS-SLAM/
+roslaunch DS_SLAM_TUM3.launch
+
+rosbag play --clock -l rgbd_dataset_freiburg3_walking_xyz.bag
+#+end_example
+
+* Source Code
+This is a forked version:
+#+begin_example
+git clone https://github.com/yubaoliu/DS-SLAM.git
+#+end_example
+
+
+* Paper
+Yu, C., Liu, Z., Liu, X. J., Xie, F., Yang, Y., Wei, Q., & Fei, Q. (2018). DS-SLAM: A Semantic Visual SLAM towards Dynamic Environments. IEEE International Conference on Intelligent Robots and Systems, 1168–1174. https://doi.org/10.1109/IROS.2018.8593691 \cite{Yu2018c}
+
+* Docs
+- https://blog.csdn.net/zjf2543771964/article/details/90451054
+- [[https://blog.csdn.net/pikachu_777/article/details/86479564][CSDN-DS-SLAM: A Semantic Visual SLAM towards Dynamic Environments]]
+
+

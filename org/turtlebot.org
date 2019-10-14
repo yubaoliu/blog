@@ -1,5 +1,18 @@
-#+EXPORT_FILE_NAME: 2019-08-26-turtlebot.html
-#+TITLE: Turtlebot
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: TURTLE BOT
+#+DESCRIPTION: post
+#+TAGS: turtle bot, robot
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-04 水 10:22:33
+#+EXPORT_FILE_NAME: 2019-09-04-turtlebot.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
 
 * Turorial
 + ROS =turtlebot_follower= ：让机器人跟随我们移动, https://blog.csdn.net/yiranhaiziqi/article/details/53085096
@@ -125,6 +138,16 @@ rosrun turtlesim draw_square
 rqt -s kobuki_dashboard
 #+end_src
 
+* Keyboard
+#+begin_example
+roslaunch turtlebot_teleop keyboard_teleop.launch
+#+end_example
+* Joy Stick
+#+begin_example
+jstest /dev/input/js0
+
+roslaunch turtlebot_teleop logitech.launch
+#+end_example
 * Mapping using gmapping and Kinect
 **turtlebot**
 
@@ -204,6 +227,7 @@ Demo:
 
 Refer:
 - https://github.com/Pankaj-Baranwal/pocketsphinx/wiki/Demo:-Kws-mode
+- [[https://medium.com/@PankajB96/pocketsphinx-in-ros-demo-1-0-74b2dfc5ebca][Pocketsphinx in ROS: Demo 1.0]]
 
 - build pocketsphinx ros wrapper
 #+begin_example
@@ -227,6 +251,13 @@ roslaunch pocketsphinx kws.launch dict:=/home/yubao/data/catkin_ws/src/pocketsph
 - Checkout data
 #+begin_example
 rostopic echo /kws_data
+#+end_example
+
+- control robot
+The turtlebot simulation subscribes to a topic: =/mobile_base/commands/velocity=. Our node publishes the required velocity and direction instructions on this topic which are read by gazebo and the turtlebot moves accordingly.
+
+#+begin_example
+rosrun pocketsphinx voice_control_example.py
 #+end_example
 
 **dict**: 
@@ -254,7 +285,6 @@ Reference:
   + 利用PocketSphinx实现语音识别
   + 利用语音命令来控制Turtlebot
   + 实现播放语音
-
 
 * 实现播放语音
 #+begin_example

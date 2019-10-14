@@ -1,6 +1,18 @@
-#+EXPORT_FILE_NAME: 2019-08-26-pocketsphinx.html
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
 #+TITLE: Pocketsphinx
-#+DATE: 2019-09-03 火 11:08:09
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-04 水 09:37:39
+#+EXPORT_FILE_NAME: 2019-09-04-pocketsphinx.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
 
 * Introduction
 - ASR := Automatic Speech Recognition

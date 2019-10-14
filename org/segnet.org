@@ -1,0 +1,18 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: Semantic Segmentation
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-07 土 11:43:32
+#+EXPORT_FILE_NAME: 2019-09-07-segnet.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+
+

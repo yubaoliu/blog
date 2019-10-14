@@ -26,7 +26,7 @@ Linux yubao-Z370M-S01 4.15.0-42-generic \#45~16.04.1-Ubuntu SMP Mon Nov 19 13:02
     sudo apt-get install build-essential cmake pkg-config
     sudo apt-get install libusb-1.0-0-dev
     sudo apt-get install libturbojpeg libjpeg-turbo8-dev
-  sudo apt-get install libglfw3-dev
+    sudo apt-get install libglfw3-dev
 
 #Optional
     sudo apt-get install beignet-dev
@@ -162,6 +162,10 @@ Connect your sensor and run kinect2_bridge:
 #+CAPTION: Kinetic2 Demo
 https://i.imgur.com/Nfr92Dp.jpg
 
+* Image_view
+#+begin_example
+rosrun image_view image_view image:=/kinect2/qhd/image_color
+#+end_example
 * Kinect2 Calibration
 Refer:
 - code-iai/=iai_kinect2=: https://github.com/code-iai/iai_kinect2/tree/master/kinect2_calibration

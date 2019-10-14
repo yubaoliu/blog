@@ -1,0 +1,58 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: Glog
+#+DESCRIPTION: post
+#+TAGS: glog
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-25 水 20:35:30
+#+EXPORT_FILE_NAME: 2019-09-25-glog.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+
+* CMakeLists.txt
+Add to /.bash.rc/:
+#+begin_example
+export glog_DIR="~/data/software/glog"
+#+end_example
+
+
+#+begin_example
+cmake_minimum_required(VERSION 3.0.2)
+project(myproj VERSION 1.0)
+
+find_package(glog 0.4.0 REQUIRED)
+
+add_executable(myapp main.cpp)
+target_link_libraries(myapp glog::glog)
+#+end_example
+* Example
+#+begin_src cpp
+#include <iostream>
+#include <glog/logging.h>
+int main(int argc, char** argv) {
+	FLAGS_alsologtostderr = 1;
+	google::InitGoogleLogging(argv[0]);
+
+	LOG(INFO) << "I am INFO!";
+	LOG(WARNING) << "I am WARNING!";
+	LOG(ERROR) << "I am ERROR!";
+	LOG(FATAL) << "I am FATAL!";
+
+	return 0;
+}
+#+end_src
+* Check Result
+#+begin_example
+/tmp/main.INFO 
+#+end_example
+* Install
+https://github.com/google/glog
+
+
+

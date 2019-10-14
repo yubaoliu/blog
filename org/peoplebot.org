@@ -1,13 +1,23 @@
-#+EXPORT_FILE_NAME: 2019-08-28-peoplebot.html
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
 #+TITLE: Peoplebot Robot
-#+KEYWORDS: 
-#+OPTIONS: body-only:t
-#+subtitle:
-
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-06 金 15:41:16
+#+EXPORT_FILE_NAME: 2019-09-06-peoplebot.org.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
 * rosaria
 - amor-ros-pkg/rosaria: https://github.com/amor-ros-pkg/rosaria
 
 * Getting started
+
 Check if you have the read/write rights in /dev/ttyUSB0. If not
 #+begin_example
 sudo chmod a+rw /dev/ttyUSB0
