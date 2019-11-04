@@ -9,7 +9,7 @@
 #+TOC: nil
 #+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
 #+DATE: 2019-11-04 Mon 11:17:43
-#+EXPORT_FILE_NAME: 2019-11-04-C_CPP.org.html
+#+EXPORT_FILE_NAME: 2019-11-04-C_CPP.html
 #+TOC: headlines 3
 #+TOC: tables
 

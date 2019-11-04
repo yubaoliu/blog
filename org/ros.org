@@ -9,7 +9,7 @@
 #+TOC: nil
 #+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
 #+DATE: 2019-11-04 Mon 10:50:02
-#+EXPORT_FILE_NAME: 2019-11-04-ros.org.html
+#+EXPORT_FILE_NAME: 2019-11-04-ros.html
 #+TOC: headlines 3
 #+TOC: listings
 #+TOC: tables
@@ -522,10 +522,6 @@ Result:
 [[https://i.loli.net/2019/02/21/5c6e4d07ede90.png]]
 
 ** Camera calibration
-   :PROPERTIES:
-   :CUSTOM_ID: camera-calibration
-   :END:
-
 - [[http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration][How
   to Calibrate a Monocular Camera]]
 
@@ -540,27 +536,6 @@ Result:
 #+BEGIN_SRC sh
     rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.025 image:=/usb_cam/image_raw camera:=/usb_cam
 #+END_SRC
-
-* FlexBe
-** Install
-- Install guide:  http://philserver.bplaced.net/fbe/download.php
-
-** How to use
-#+begin_example
-roslaunch flexbe_app  flexbe_full.launch
-#+end_example
-** No behaviors and no states shown
-
-The common problem is no behaviors and states detected by =flexbe_app=.
-
-[[post:flexbe_issue.png]]
-
-Solution:
-
-#+begin_example
-
-#+end_example
-
 
 * Erros
 ** OpenCV version conflict

@@ -12,6 +12,7 @@
 #+TOC: headlines 3
 #+TOC: listings
 #+TOC: tables
+#+EXPORT_FILE_NAME: resume.html
 #+PERMALINK: /resume/
 
 

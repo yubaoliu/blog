@@ -1,0 +1,78 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: FlexBe
+#+DESCRIPTION: post
+#+TAGS: FlexBe
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-11-04 Mon 12:13:13
+#+EXPORT_FILE_NAME: 2019-11-04-FlexBe.org.html
+#+TOC: headlines 3
+#+TOC: tables
+
+* Install
+- Install guide:  http://philserver.bplaced.net/fbe/download.php
+
+First try according to this guide. If behaviors and states are not detected by flexbe_app. Please read the following instruction.
+
+I have tried on Ubuntu 16.04 and 18. It is working.
+
+* How to use
+#+begin_example
+roslaunch flexbe_app  flexbe_full.launch
+#+end_example
+* No behaviors and no states shown
+
+The common problem is no behaviors and states detected by =flexbe_app=.
+
+[[post:flexbe_issue.png]]
+
+Solution:
+
+- Create a null ros workspace
+- Remove old flexbe
+#+begin_example sh
+sudo apt autoremove ros-kinetic-flexbe*
+#+end_example
+
+- Download source code
+#+begin_example sh
+cd ~/catkin_ws/src  # or an alternative workspace source path
+git clone https://github.com/team-vigir/flexbe_behavior_engine.git
+git clone https://github.com/FlexBE/flexbe_app.git
+git clone https://github.com/FlexBE/generic_flexbe_states.git
+#+end_example
+
+- Build
+#+begin_example sh
+cd ~/catkin_ws
+catkin build
+source devel/setup.bash
+#+end_example
+
+- Create Demo Behaviors Repository
+#+begin_example sh
+rosrun flexbe_widget create_repo tutorial
+
+cd ~/catkin_ws
+catkin build
+source devel/setup.bash
+#+end_example
+
+* Note
+** Source setup.bash
+Make sure you 
+#+begin_example sh
+source devel/setup.bash
+#+end_example
+rather than 
+#+begin_example sh
+source devel/setup.sh
+#+end_example
+** Try to run in a new terminal
+** It is conflict with /pocketshinx/
+
+FlexBe run properly after removing /pocketshinx/.

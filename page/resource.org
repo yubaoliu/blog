@@ -9,6 +9,7 @@
 #+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t
 #+DATE: 2019-09-03 火 19:20:01
 #+TOC: headlines 3
+#+EXPORT_FILE_NAME: resources.html
 #+PERMALINK: /resource/
 * Book Marks
 ** Academic
