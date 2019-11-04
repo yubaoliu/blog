@@ -55,16 +55,36 @@ The assumption of scene rigidity is typical in SLAM algorithms. Such a strong as
 - Really large baselines (foreshortening adn appearance change)
 - Camera calibration errors
 
+* Kinect Fusion
+** Tutorial
+- [[https://wlsdzyzl.top/2019/01/25/3D-Reconstruction%E2%80%94%E2%80%94TSDF-volume-reconstruction/][3D Reconstruction——TSDF volume reconstruction]]
+- [[https://courses.cs.washington.edu/courses/cse571/15au/slides/14-mapping-tsdf.pdf][CSE-571 Mapping	and	Modeling Using	Truncated	Signed	Distance Functions]]
+- [[https://www.alanzucconi.com/2016/07/01/signed-distance-functions/][Volumetric Rendering: Signed Distance Functions]]
+Signed Distance Functions
+
+** Volumetric Representation
+Volume就是一个体空间。
+** SDF 与 TSDF
+- TSDF( Truncated Signed Distance Functions ) — 截断符号距离函数
+- SDF （Signed Distance Functions）— 符号距离函数
+
+一个体素的SDF值，是它到最近的表面的距离，如果它在表面前（也就是距离相机更近），它是正值，如果在表面后，则为负值。
+
 * RGBD SLAM
 - yubaoliu/rgbdslam_v2: git@github.com:yubaoliu/rgbdslam_v2.git
 * RTAB MAP
 - [[https://blog.51cto.com/remyspot/1784914][SLAM: RtabMap中文解析]]
 - [[http://introlab.github.io/rtabmap/][RTAB-Map-gitio]]
 - [[http://introlab.github.io/rtabmap/][RTAB-Map]]
+- http://wiki.ros.org/rtabmap_ros  
 
 #+BEGIN_HTML
   <iframe width="640" height="480" src="https://www.youtube.com/embed/AMLwjo80WzI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 #+END_HTML
+** ROS version
+#+begin_example
+sudo apt-get install ros-kinetic-rtabmap-ros
+#+end_example
 
 * GSLAM
 - [[https://github.com/zdzhaoyong/GSLAM][zdzhaoyong/GSLAM]]
@@ -148,6 +168,10 @@ optional arguments:
   -h, --help  show this help message and exit
 #+end_example
 
+* References
+- Kinect Fusion 之 TSDF, http://adastaybrave.com/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/2018/09/02/Kinect-Fusion-%E4%B9%8B-TSDF/
+
 * Footnotes
 
 [fn:1] https://www.bilibili.com/video/av44472237?from=search&seid=15063536043439842457 
+

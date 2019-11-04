@@ -1,10 +1,18 @@
-#+EXPORT_FILE_NAME: 2019-09-01-realsense.html
-#+TITLE: 
-#+DATE: <2019-09-01 日>
-#+KEYWORDS: 
-#+SUBTITLE:
-#+TAGS:
-#+OPTIONS: H:3 num:t tags:t toc:t timestamps:t
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: Realsense
+#+DESCRIPTION: post
+#+TAGS: realsense
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-10-20 Sun 14:51:52
+#+EXPORT_FILE_NAME: 2019-10-20-realsense.org.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
 
 * Resources
 
@@ -28,6 +36,10 @@ Ubuntu 16.04/18.04 LTS (Linux Kernels 4.4, 4.8 ,4.10, 4.13, 4.15 and
 -  Intel® RealSense™ Depth Cameras D435i
 -  ROS Wrapper 2.0 for Intel® RealSense™ Devices (build 2.2.1)
    [[https://github.com/intel-ros/realsense/releases][Download]]
+   
+#+begin_example bash
+sudo apt install ros-kinetic-ddynamic-reconfigure
+#+end_example
 
 Important notes: - Don't use the Using pre-build packages, try to build
 with source code. I don't know why - Make sure the SDK's version is

@@ -1,0 +1,162 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: Mask RCNN
+#+DESCRIPTION: post
+#+TAGS: Mask-Rcnn
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-10-20 Sun 11:51:18
+#+EXPORT_FILE_NAME: 2019-10-20-Mask-RCNN.org.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+* Overview
+- R-CNN
+- Fast R-CNN
+- Faster R-CNN
+- FCN
+- FPN
+* Compile
+** Install pycoco
+#+begin_example
+cd 3rdPartyLibs/coco/PythonAPI
+make
+make install
+python setup.py install
+#+end_example
+before doing above steps install cython
+Refer: https://github.com/matterport/Mask_RCNN/issues/6
+** verson
+- tensorflow==1.4
+- keras==2.1.3
+- cudnn 6
+- cuda 6.0  
+
+** Tensorflow
+
+Check tensorflow version via:
+#+begin_example
+import tensorflow as tf
+ print(tf.__version__)
+#+end_example
+
+Tensorflow 2.0 is not compatible with demo.ipynb due to removal of log function, potentially among others
+
+Therefore use 1.4 rather than 2.0
+
+#+begin_example
+pip3 install tensorflow=1.4
+pip3 install keras==2.1.3
+#+end_example
+
+
+CUDA 8.0→cuDNN v5.1 / CUDA 8.0→cuDNN v6.0 / CUDA 9.0→cuDNN v7.0.5
+
+tensorflow 1.6/1.5和CUDA ９.0对应，1.4/1.3和CUDA 8.0对应
+
+#+begin_example
+pip3 install -r requirements.txt
+# Modify:
+tensorflow==1.4
+keras==2.1.3
+
+python3 setup.py install
+#+end_example
+** Keras
+#+begin_export 
+import keras
+print(keras.__version__)
+#+end_export
+* Example 
+#+begin_example
+python3 demo.py
+#+end_example
+
+demo.py
+#+begin_src  python
+import os
+import sys
+import random
+import math
+import numpy as np
+import skimage.io
+import matplotlib
+import matplotlib.pyplot as plt
+
+# Root directory of the project
+ROOT_DIR = os.path.abspath("../")
+
+# Import Mask RCNN
+sys.path.append(ROOT_DIR)  # To find local version of the library
+from mrcnn import utils
+import mrcnn.model as modellib
+from mrcnn import visualize
+# Import COCO config
+sys.path.append(os.path.join(ROOT_DIR, "samples/coco/"))  # To find local version
+import coco
+
+# Directory to save logs and trained model
+MODEL_DIR = os.path.join(ROOT_DIR, "logs")
+
+# Local path to trained weights file
+COCO_MODEL_PATH = os.path.join(ROOT_DIR, "data/mask_rcnn_coco.h5")
+# Download COCO trained weights from Releases if needed
+if not os.path.exists(COCO_MODEL_PATH):
+    utils.download_trained_weights(COCO_MODEL_PATH)
+
+# Directory of images to run detection on
+IMAGE_DIR = os.path.join(ROOT_DIR, "images")
+
+class InferenceConfig(coco.CocoConfig):
+    # Set batch size to 1 since we'll be running inference on
+    # one image at a time. Batch size = GPU_COUNT * IMAGES_PER_GPU
+    GPU_COUNT = 1
+    IMAGES_PER_GPU = 1
+
+config = InferenceConfig()
+config.display()
+
+#create model object in inference mode.
+model = modellib.MaskRCNN(mode="inference", model_dir=MODEL_DIR, config=config)
+
+# Load weights trained on MS-COCO
+model.load_weights(COCO_MODEL_PATH, by_name=True)
+
+class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
+               'bus', 'train', 'truck', 'boat', 'traffic light',
+               'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird',
+               'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear',
+               'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie',
+               'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball',
+               'kite', 'baseball bat', 'baseball glove', 'skateboard',
+               'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup',
+               'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple',
+               'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza',
+               'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed',
+               'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote',
+               'keyboard', 'cell phone', 'microwave', 'oven', 'toaster',
+               'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors',
+               'teddy bear', 'hair drier', 'toothbrush']
+
+
+# Load a random image from the images folder
+file_names = next(os.walk(IMAGE_DIR))[2]
+image = skimage.io.imread(os.path.join(IMAGE_DIR, random.choice(file_names)))
+
+# Run detection
+results = model.detect([image], verbose=1)
+
+# Visualize results
+r = results[0]
+visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], 
+                            class_names, r['scores'])
+#+end_src
+* Resources
+ - [[https://www.bilibili.com/video/av24795835?from=search&seid=2534581030724879571][【中文】Mask
+  R-CNN 深度解读与源码解析 目标检测 物体检测 RCNN object detection
+  语义分割]]
+- [[https://github.com/matterport/Mask_RCNN][Github-matterport/Mask_RCNN]]
+- [[https://arxiv.org/pdf/1703.06870.pdf][Mask R-CNN- paper_pdf]]

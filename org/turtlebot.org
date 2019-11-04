@@ -298,3 +298,65 @@ Change another person to read.
 $ sudo apt-get install festvox-don  
 $ rosrun sound_play say.py "Welcome to the future" voice_don_diphone
 #+end_example
+* Navigation using Movebase
+- [[http://ros-developer.com/2017/05/09/slam-using-gmapping-with-turtlebot-robot-and-gazbo/][SLAM using gmapping with TurtleBot robot and Gazbo]]
+- [[http://wiki.ros.org/turtlebot_gazebo/Tutorials/indigo/Make%20a%20map%20and%20navigate%20with%20it][Make a map and navigate with it]]
+
+This demo only use gazebo simulator.
+
+** Mapping using gmapping
+#+begin_example sh
+roscore
+rosparam  set /use_sim_time true
+#+end_example
+
+#+begin_example
+roslaunch turtlebot_gazebo turtlebot_world.launch
+roslaunch turtlebot_gazebo gmapping_demo.launch
+roslaunch turtlebot_rviz_launchers view_navigation.launch
+roslaunch turtlebot_teleop logitech.launch
+
+rosrun map_server map_saver -f  /tmp/mymap
+#+end_example
+** Localization
+quit all the terminals above
+#+begin_example sh
+roslaunch turtlebot_gazebo turtlebot_world.launch
+
+roslaunch chefbot_bringup amcl_demo.launch map_file:=/tmp/mymap.yaml
+
+roslaunch turtlebot_rviz_launchers view_navigation.launch
+#+end_example
+
+* RTABMAP SLAM
+
+[[http://wiki.ros.org/rtabmap_ros/Tutorials/MappingAndNavigationOnTurtlebot][MappingAndNavigationOnTurtlebot]]
+
+Use simulater rather than real robot.
+** Requirements
+#+begin_example sh
+ sudo apt-get install ros-kinetic-turtlebot-bringup ros-kinetic-turtlebot-navigation ros-kinetic-rtabmap-ros
+#+end_example
+
+** Usage
+#+begin_example sh
+$ roslaunch turtlebot_bringup minimal.launch
+$ roslaunch rtabmap_ros demo_turtlebot_mapping.launch
+#+end_example
+** Visualization
+#+begin_example
+ $ roslaunch rtabmap_ros demo_turtlebot_rviz.launch
+or
+ $ rosrun rviz rviz -d turtlebot_navigation.rviz
+
+roslaunch rtabmap_ros demo_turtlebot_mapping.launch args:="--delete_db_on_start"
+#+end_example
+
+** Gazebo
+#+begin_example
+$ roslaunch turtlebot_gazebo turtlebot_world.launch
+$ roslaunch rtabmap_ros demo_turtlebot_mapping.launch simulation:=true
+$ roslaunch rtabmap_ros demo_turtlebot_rviz.launch
+#+end_example
+
+

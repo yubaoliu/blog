@@ -1,6 +1,24 @@
-#+EXPORT_FILE_NAME: 2019-08-27-ros.html
-#+TITLE: ROS Development
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: ROS
+#+DESCRIPTION: post
+#+TAGS: ros
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-11-04 Mon 10:50:02
+#+EXPORT_FILE_NAME: 2019-11-04-ros.org.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
 
+* Common Used Commands
+- dependences
+#+begin_example
+rosdep install -r --from-paths .
+#+end_example
 * Resources
 ** 中国大学MOOC---《机器人操作系统入门》
 - [[https://www.bilibili.com/video/av24585414/?p=7&t=231][ROS机器人操作系统入门-中国大学MOOC]]
@@ -438,10 +456,6 @@ Add Image view;
     roslaunch pr2_bringup pr2.launch
 #+END_SRC
 * ROS in Practice
-  :PROPERTIES:
-  :CUSTOM_ID: ros-in-practice
-  :END:
-
 ** cv_camera
    :PROPERTIES:
    :CUSTOM_ID: cv_camera
@@ -461,11 +475,7 @@ Usage:
     rosrun cv_camera cv_camera_node
 #+END_SRC
 
-** usb_cam
-   :PROPERTIES:
-   :CUSTOM_ID: usb_cam
-   :END:
-
+** =usb_cam=
 #+BEGIN_SRC sh
     sudo apt-get install ros-kinetic-usb-cam
 
@@ -493,9 +503,6 @@ Usage:
 [[https://i.loli.net/2019/02/12/5c62abc8e7d30.png]]
 
 ** Usb camera from sources
-   :PROPERTIES:
-   :CUSTOM_ID: usb-camera-from-sources
-   :END:
 
 #+BEGIN_SRC sh
     cd catkin_ws/src
@@ -533,6 +540,27 @@ Result:
 #+BEGIN_SRC sh
     rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.025 image:=/usb_cam/image_raw camera:=/usb_cam
 #+END_SRC
+
+* FlexBe
+** Install
+- Install guide:  http://philserver.bplaced.net/fbe/download.php
+
+** How to use
+#+begin_example
+roslaunch flexbe_app  flexbe_full.launch
+#+end_example
+** No behaviors and no states shown
+
+The common problem is no behaviors and states detected by =flexbe_app=.
+
+[[post:flexbe_issue.png]]
+
+Solution:
+
+#+begin_example
+
+#+end_example
+
 
 * Erros
 ** OpenCV version conflict

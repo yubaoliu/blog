@@ -4,6 +4,23 @@
 #+OPTIONS: body-only:t
 #+subtitle: my vim config
 
+* Install software
+#+begin_example
+sudo apt-get install vim-gtk
+#+end_example
+
+
+* .vimrc
+** clipboard
+#+begin_example
+set clipboard=unnamed,autoselect
+#+end_example
+
+#+begin_example bash
+$ vim --version | grep clipboard
++clipboard       +insert_expand   +path_extra      +user_commands
++emacs_tags      +mouseshape      +startuptime     +xterm_clipboard
+#+end_example
 * Vim粘贴代码时缩进混乱
 ** 取消自动缩进 
 在命令模式下，使用“:set nosmartindent”和“:set noautoindent”取消自动缩进，然后再粘贴即可。完成后再开启自动缩进“:set smartindent”和“:set autoindent”，以上命令都可使用简写，比如“:set si”，可通过Vim的帮助“:help smartindent”查看相应说明。[fn:1] 

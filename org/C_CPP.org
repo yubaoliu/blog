@@ -1,8 +1,17 @@
-#+EXPORT_FILE_NAME: 2019-08-31-c-cpp.html
-#+TITLE: CPP Manual
-#+KEYWORDS: 
-#+DATE: <2019-08-31 土>
-#+subtitle: 
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: C_CPP
+#+DESCRIPTION: post
+#+TAGS: c, cpp
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-11-04 Mon 11:17:43
+#+EXPORT_FILE_NAME: 2019-11-04-C_CPP.org.html
+#+TOC: headlines 3
+#+TOC: tables
 
 * DataType  
 ** DataType Convertion

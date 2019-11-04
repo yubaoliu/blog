@@ -14,6 +14,23 @@
 #+TOC: listings
 #+TOC: tables
 * Introduction
+- [[https://github.com/gaoxiang12/ORBSLAM2_with_pointcloud_map.git][ORBSLAM2_with_pointcloud_map]]
+- yubaoliu/YB_ORB_SLAM: git@github.com:yubaoliu/YB_ORB_SLAM.git
+** Play bag file bug no map
+- Camera only rotates w/o translation and point clouds is not showing on Map Viewer
+
+Refer: [[https://github.com/raulmur/ORB_SLAM2/issues/534][Camera only rotates w/o translation and point clouds is not showing on Map Viewer]]
+
+- Solution
+
+Setting DepthMapFactor to 1 of TUM yalm file solved this problem
+
+#+begin_src 
+rosbag play --clock   rgbd_dataset_freiburg1_xyz.bag  /camera/rgb/image_color:=/camera/rgb/image_raw /camera/depth/image:=/camera/depth/image_raw
+#+end_src
+
+
+
 This paper presents ORB-SLAM, a feature-based monocular simultaneous localization and mapping (SLAM) system that operates in real time, in small and large indoor and outdoor environments.
 
 The system is robust to severe motion clutter, allows wide baseline loop closing and relocalization, and includes full automatic initialization.

@@ -1,0 +1,42 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: G2O
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-10-08 Tue 13:44:37
+#+EXPORT_FILE_NAME: 2019-10-08-g2o.org.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Error 
+** Eigen
+#+begin_example
+DRM_IOCTL_I915_GEM_APERTURE failed: Invalid argument
+Assuming 131072kB available aperture size.
+May lead to reduced performance or incorrect rendering.
+get chip id failed: -1 [22]
+param: 4, val: 0
+beignet-opencl-icd: no supported GPU found, this is probably the wrong opencl-icd package for this hardware
+(If you have multiple ICDs installed and OpenCL works, you can ignore this message)
+vo_g2o: /usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h:258: void Eigen::PlainObjectBase<Derived>::resize(Eigen::Index, Eigen::Index) [with Derived = Eigen::Matrix<double, 3, 3>; Eigen::Index = long int]: Assertion `(!(RowsAtCompileTime!=Dynamic) || (rows==RowsAtCompileTime)) && (!(ColsAtCompileTime!=Dynamic) || (cols==ColsAtCompileTime)) && (!(RowsAtCompileTime==Dynamic && MaxRowsAtCompileTime!=Dynamic) || (rows<=MaxRowsAtCompileTime)) && (!(ColsAtCompileTime==Dynamic && MaxColsAtCompileTime!=Dynamic) || (cols<=MaxColsAtCompileTime)) && rows>=0 && cols>=0 && "Invalid sizes when resizing a matrix or array."' failed.
+Aborted (core dumped)
+#+end_example
+
+Solution:
+
+This is bug of Eigen of library
+
+How to solve:
+
+-  https://github.com/RainerKuemmerle/g2o/issues/109
+- https://github.com/RainerKuemmerle/g2o/issues/165
+
+
+
+

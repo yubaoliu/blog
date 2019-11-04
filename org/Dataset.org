@@ -105,5 +105,9 @@ There will now be a VOCdevkit/ subdirectory with all the VOC training data in it
 Inpainted and raw depth available
 Both object and instance labels
 #+end_example
+* COCO
+[[http://cocodataset.org/#home][coo-home]]
+* Replica
+[[https://github.com/facebookresearch/Replica-Dataset][facebookresearch/Replica-Dataset]]
 * Concepts
 - ILSVRC: ImageNet Large Scale Visual Recognition Competition 

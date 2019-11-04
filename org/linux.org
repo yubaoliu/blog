@@ -11,6 +11,8 @@
 #+EXPORT_FILE_NAME: 2019-09-03-linux.html
 #+TOC: headlines 3
 
+* Common Used Command
+** htop
 * Install and Uninstall for Ubuntu Linux
 ** Note
 1. Execute the following steps sequentially

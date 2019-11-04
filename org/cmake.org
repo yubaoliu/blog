@@ -83,6 +83,18 @@ target_link_libraries( DisplayImage ${OpenCV_LIBS} )
 #+END_SRC
 
 #+end_example
+* Glog
+#+begin_example
+find_package(glog REQUIRED)
+glog::glog
+#+end_example
+
+How to use?
+
+#+begin_example
+#include <glog/logging.h>
+google::InitGoogleLogging(argv[0]);
+#+end_example
 * X11
 #+begin_example
 # Find X11

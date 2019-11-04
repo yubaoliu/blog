@@ -1,0 +1,20 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: AR
+#+TITLE: Unity
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-18 水 19:20:39
+#+EXPORT_FILE_NAME: 2019-09-18-unity-AR.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Get APP
+Official Installer for 64-bit Ubuntu Linux:
+http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015090301_amd64.deb
+

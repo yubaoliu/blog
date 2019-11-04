@@ -1,0 +1,20 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: Robot
+#+DESCRIPTION: post
+#+TAGS: robot
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-10-31 Thu 10:08:11
+#+EXPORT_FILE_NAME: 2019-10-31-robot.org.html
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+
+* Types of Robots
+- [[https://introlab.3it.usherbrooke.ca/mediawiki-introlab/index.php/AZIMUT][AZIMUT]]
+[[file:http://wiki.ros.org/rtabmap_ros/Tutorials/SetupOnYourRobot?action=AttachFile&do=get&target=azimut.png]]
+

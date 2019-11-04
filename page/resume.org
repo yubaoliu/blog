@@ -1,0 +1,19 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: default
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: Resume
+#+DESCRIPTION: page
+#+TAGS: rsume
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-09-04 水 20:54:25
+#+TOC: headlines 3
+#+TOC: listings
+#+TOC: tables
+#+PERMALINK: /resume/
+
+
+* Updating .....
+

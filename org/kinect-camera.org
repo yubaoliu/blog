@@ -170,6 +170,7 @@ rosrun image_view image_view image:=/kinect2/qhd/image_color
 Refer:
 - code-iai/=iai_kinect2=: https://github.com/code-iai/iai_kinect2/tree/master/kinect2_calibration
 - kinect2的标定: https://www.cnblogs.com/li-yao7758258/p/7445429.html
+- [[http://wiki.ros.org/openni_launch/Tutorials/IntrinsicCalibration][openni_launchTutorialsIntrinsicCalibration]]
 
 * Ros Simulation - =iai_kinect2=
 - [[https://github.com/code-iai/iai_kinect2][github]]
