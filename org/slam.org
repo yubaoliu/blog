@@ -5,7 +5,7 @@
 #+CATEGORIES: blog
 #+TITLE: SLAM Sumarry
 #+DESCRIPTION: post
-#+TAGS: 
+#+TAGS: slam
 #+TOC: nil
 #+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
 #+DATE: 2019-09-05 木 08:53:03
@@ -14,8 +14,23 @@
 #+TOC: listings
 #+TOC: tables
 
-* Quick References
+* Tutorial
 - [[https://fzheng.me/2016/05/30/slam-review/][Brief Review on Visual SLAM: A Historical Perspective]]
+- [[https://blog.csdn.net/heyijia0327][知行合一 [CSDN]​]]
+  - 从零开始手写 VIO
+- CMPUT631: Autonomous Robot Navigation: https://webdocs.cs.ualberta.ca/~zhang/c631/
+  - Instructor: Dr. Hong Zhang, 407 Athabasca Hall, 492-7188, hzhang@ualberta.ca
+  - Course Page: http://www.cs.ualberta.ca/~zhang/c631
+  - https://webdocs.cs.ualberta.ca/~zhang/teaching.html
+
+- Module 1: Least Squares Estimation and SLAM, http://www.diag.uniroma1.it/grisetti/teaching/lectures-ls-slam-master_2014_15/web/
+
+Dip. Informatica e Sistemistica Sapienza Università di Roma
+
+- Module 1: Least Squares Estimation and SLAM, http://www.diag.uniroma1.it/grisetti/teaching/lectures-ls-slam-master_2014_15/web/
+
+- [[http://paopaorobot.org/bbs/read.php?tid=117][【泡泡机器人】公开课链接]]
+- [[https://www.youtube.com/playlist?list=PLkcuHsB39IRLUxHvY89exXy3Y6xOxuHt_][George Hotz GeoHot Twitch Livecoding SLAM]] 
 * Introduction
 ** What is SLAM?
 SLAM: Simultaneous Localization and Mapping
@@ -55,6 +70,65 @@ The assumption of scene rigidity is typical in SLAM algorithms. Such a strong as
 - Really large baselines (foreshortening adn appearance change)
 - Camera calibration errors
 
+* Semantic SLAM
+
+** QuadricSLAM
+- [[http://www.semanticslam.ai/][SemanticSLAM.ai]]
+
+* SLAM Algorithms
+** RT-SLAM
+- [[https://github.com/damarquezg/rtslam][RT-SLAM]]
+** SLAMTB
+- [[https://github.com/damarquezg/SLAMTB][SLAMTB]] 
+EKF-SLAM TOOLBOX FOR MATLAB
+** Openvslam
+- [[https://github.com/xdspacelab/openvslam][xdspacelab/openvslam]]
+** PTAM
+- [[https://github.com/Oxford-PTAM/PTAM-GPL][PTAM]]
+** RTAB Map
+- [[http://introlab.github.io/rtabmap/][RTAB-Map]]
+- https://github.com/introlab/rtabmap_ros.git ; http://wiki.ros.org/rtabmap_ros
+** Loop Closure
+- [[https://github.com/dorian3d/DLoopDetector][dorian3d/DLoopDetector]]
+** maskfusion
+
+** Openkarto
+- [[https://github.com/skasperski/OpenKarto/tree/master/source][skasperski/OpenKarto]]
+** Type Conversion Between Eigen, G2O, OpenCV
+- https://github.com/gaoxiang12/rgbd-slam-tutor2/blob/master/include/converter.h
+- https://github.com/raulmur/ORB_SLAM2/blob/master/include/Converter.h
+- [[http://www.justlive.vip/blog/article/details/3136][Blog-g2o、Eigen、Mat矩阵类型转换-Just Live]]
+- https://blog.csdn.net/hzwwpgmwy/article/details/80712967
+
+** Loop Closure
+- [[https://github.com/craymichael/CNN_LCD][craymichael/CNN_LCD]]
+ CNNs for Loop-Closure Detection on the Oxford New College and City Centre Datasets
+
+* Challenges in Visual SLAM
+** Initialization
+** Data association
+ - Feature Matching
+** Optical Flow
+   FlowNet FlowNetSimple, FlowNetCorr
+
+   PWC-Net
+** Depth Eistimation
+- GC-Net
+- MonoDepth 
+Unsupervised Monocular Depth Estimation with ...
+- SFMLearner - Unsupervised
+
+** No semantic information
+- Mask R-CNN (Instance Segmentation)
+** Localization
+https://www.visuallocalization.net/
+** Others
+- Deep TAM
+- Code SLAM
+- GN NET
+- VI NET IMU
+- NetVLAD
+- VSO 
 * Kinect Fusion
 ** Tutorial
 - [[https://wlsdzyzl.top/2019/01/25/3D-Reconstruction%E2%80%94%E2%80%94TSDF-volume-reconstruction/][3D Reconstruction——TSDF volume reconstruction]]
@@ -73,17 +147,35 @@ Volume就是一个体空间。
 * RGBD SLAM
 - yubaoliu/rgbdslam_v2: git@github.com:yubaoliu/rgbdslam_v2.git
 * RTAB MAP
+** Resource
 - [[https://blog.51cto.com/remyspot/1784914][SLAM: RtabMap中文解析]]
 - [[http://introlab.github.io/rtabmap/][RTAB-Map-gitio]]
-- [[http://introlab.github.io/rtabmap/][RTAB-Map]]
+- [[http://introlab.github.io/rtabmap/][RTxAB-Map]]
 - http://wiki.ros.org/rtabmap_ros  
 
-#+BEGIN_HTML
-  <iframe width="640" height="480" src="https://www.youtube.com/embed/AMLwjo80WzI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-#+END_HTML
+#+begin_export html
+<iframe width="640" height="480" src="https://www.youtube.com/embed/AMLwjo80WzI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+#+end_export
+
 ** ROS version
 #+begin_example
 sudo apt-get install ros-kinetic-rtabmap-ros
+#+end_example
+
+** With ORB SLAM2
+#+begin_export  sh
+export ORB_SLAM2_ROOT_DIR=/home/yubao/data/catkin_ws/src/ORB_SLAM2
+#+end_export
+
+I see this error:
+#+begin_example
+/usr/bin/ld: cannot find -lpangolin
+collect2: error: ld returned 1 exit status
+rtabmap_ros/CMakeFiles/rtabmap_rgbd_sync.dir/build.make:1222: recipe for target '/home/yubao/data/catkin_ws/devel/lib/rtabmap_ros/rgbd_sync' failed
+make[2]: *** [/home/yubao/data/catkin_ws/devel/lib/rtabmap_ros/rgbd_sync] Error 1
+CMakeFiles/Makefile2:16659: recipe for target 'rtabmap_ros/CMakeFiles/rtabmap_rgbd_sync.dir/all' failed
+make[1]: *** [rtabmap_ros/CMakeFiles/rtabmap_rgbd_sync.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
 #+end_example
 
 * GSLAM

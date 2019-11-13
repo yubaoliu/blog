@@ -1,0 +1,87 @@
+#+STARTUP: showall
+#+STARTUP: hidestars
+#+LAYOUT: post
+#+AUTHOR: Yubao Liu
+#+CATEGORIES: default
+#+TITLE: Academy
+#+DESCRIPTION: post
+#+TAGS: 
+#+TOC: nil
+#+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
+#+DATE: 2019-11-08 Fri 16:35:08
+#+EXPORT_FILE_NAME: 2019-11-08-academe.html
+#+TOC: headlines 3
+#+TOC: tables
+
+
+
+* Resource
+- [[https://www.zhihu.com/question/66006923/answer/513174641][当前深度学习和slam结合有哪些比较好的论文，有没有一些开源的代码?]]
+* Researcher
+** Hong Zhang, PhD
+- https://webdocs.cs.ualberta.ca/~zhang/teaching.html
+
+I typically teach robotics, at both undergraduate and graduate levels.
+
+- CMPUT 412, "Experimental Mobile Robotics"
+- CMPUT 631, "Autonomous Robot Navigation"
+
+** Giorgio Grisetti 
+- https://sites.google.com/dis.uniroma1.it/grisetti
+
+Giorgio Grisetti is associate professor at Sapienza University of Rome. He is member of the RoCoCo lab at La Sapienza since November 2010. He is also member of the Autonomous Intelligent Systems Lab. at Freiburg University headed by Wolfram Burgard where he worked as a Post Doc since 2006. His research interests lie in the areas of mobile robotics. His previous and current works aimes to provide effective solutions to mobile robot navigation in all its aspects: SLAM, localization and path planning. He was a PhD student at University of Rome "La Sapienza" in the Intelligent Systems Lab. His advisor was Daniele Nardi and he received his PhD degree in April 2006. His PhD thesis focused on SLAM using Rao-Blackwellized particle filters. In 2001, he received his M.Sc. degree in computer engineering, at the University of Rome
+
+Contacts
+
+Prof. Giorgio Grisetti
+
+Dept. of Systems and Computer Science Sapienza University of Rome Via Ariosto 25 I-00185 Rome Italy
+
+Phone: +39 - 06 (keep the "0") - 77274121 Fax: +39 - 06 (keep the "0") - 77274106
+
+email: grisetti {at} dis.uniroma1.it
+
+- Probabilistic Robotics, https://sites.google.com/dis.uniroma1.it/probabilistic-robotics/home
+
+Teaching Material: https://sites.google.com/dis.uniroma1.it/probabilistic-robotics/teaching-material?authuser=0
+
+#+begin_example cpp
+git clone https://gitlab.com/grisetti/probabilistic_robotics_2018_19 
+sudo apt-get install octave
+#+end_example
+
+** [[http://campar.in.tum.de/Main/KeisukeTateno][Keisuke Tateno (立野 圭祐)]]
+  - Real-time Incremental Segmentation on Dense SLAM
+** [[https://www.cnblogs.com/easonslam/p/8961387.html][Eason_Jiang SLAM算法工程师/香港城大PhD]] 
+Skimap_ros 利用RGBD创建Octomap
+
+** Gao Xiang
+- [[https://www.cnblogs.com/gaoxiang12/][gaoxiang-cnblog]]
+- [[https://github.com/gaoxiang12/rgbd-slam-tutor2][gaoxiang12/rgbd-slam-tutor2]]
+- [[https://github.com/gaoxiang12/rgbd-slam-tutorial-gx][gaoxiang12/rgbd-slam-tutorial-gx]]
+- [[https://github.com/gaoxiang12/octomap_tutor][gaoxiang12/octomap_tutor]]
+* Papers
+- [[https://github.com/mengyuest/iros2018-slam-papers][iros2018-slam-papers]]
+- [[https://github.com/YiChenCityU/Recent_SLAM_Research][YiChenCityU/Recent_SLAM_Research]]
+- [[https://www.zhihu.com/question/66006923/answer/513174641][当前深度学习和slam结合有哪些比较好的论文，有没有一些开源的代码]]
+
+* Good Blogs
+- [[https://blog.csdn.net/zouxy09/article/details/14222605][zouxy09博客原创性博文导航]]
+
+- [[https://github.com/Ewenwan/MVision][Ewenwan/MVision]] 机器人视觉 移动机器人 VS-SLAM ORB-SLAM2 深度学习目标检测 yolov3 行为检测 opencv PCL 机器学习 无人驾驶
+- [[https://github.com/topics/visual-slam][visual-slam]] 
+
+** 一索哥传奇
+- https://zhehangt.github.io/
+- SLAM
+** liampayne_66d0
+- https://www.jianshu.com/u/e7cafd947c4b
+- SLAM
+
+* Robotics News
+** IEEE spectrum 
+https://spectrum.ieee.org/robotics
+** arXiv public library
+https://arxiv.org/list/cs.RO/recent
+* New Technology
+- [[https://aihabitat.org/][habitat AI]]

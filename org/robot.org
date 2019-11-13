@@ -9,12 +9,22 @@
 #+TOC: nil
 #+OPTIONS: H:2 num:t tags:t toc:nil timestamps:nil email:t date:t body-only:t
 #+DATE: 2019-10-31 Thu 10:08:11
-#+EXPORT_FILE_NAME: 2019-10-31-robot.org.html
+#+EXPORT_FILE_NAME: 2019-10-31-robot.html
 #+TOC: headlines 3
 #+TOC: listings
 #+TOC: tables
 
 * Types of Robots
-- [[https://introlab.3it.usherbrooke.ca/mediawiki-introlab/index.php/AZIMUT][AZIMUT]]
+** [[https://introlab.3it.usherbrooke.ca/mediawiki-introlab/index.php/AZIMUT][AZIMUT]]
 [[file:http://wiki.ros.org/rtabmap_ros/Tutorials/SetupOnYourRobot?action=AttachFile&do=get&target=azimut.png]]
+** husky
+https://github.com/husky/husky.git
+** HSR
+
+* Simulator
+- Service sim 
+[[https://www.openrobotics.org/blog/2018/5/22/service-robot-simulator][service sim robot]]
+* Tutorial
+- [[https://www.theconstructsim.com/ros-qa-053-how-to-move-a-robot-to-a-certain-point-using-twist/][How to Move a Robot to a Certain Point Using Twist]]
+
 

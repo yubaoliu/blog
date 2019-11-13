@@ -19,19 +19,28 @@
 - [[https://learnxinyminutes.com/][Learn X in Y minutes]]
 - [[http://www.runoob.com/][runoob]]
 - [[https://www.geeksforgeeks.org][geeksforgeeks]]
-** Robot
-- [[https://www.ncnynl.com/archives/201609/787.html][Turtlebot入门-目录]]
-- [[http://petercorke.com/wordpress/resources/moocs][MOOCs]] Robotics Vision and Control
+
 ** MVG
 - [[https://www.comp.nus.edu.sg/~cs4243/lecture/][cs4243/lecture-nus.edu]] camera model
 - 
-** ROS
+** ROS and Robot
 - [[https://sychaichangkun.gitbooks.io/ros-tutorial-icourse163/content/][课程讲义]]  [[https://github.com/sychaichangkun/ROS-Academy-for-Beginners][Github-中国大学MOOC-《机器人操作系统入门》]]
 - [[https://www.ncnynl.com/archives/201608/496.html][ROS入门教程-目录]] ncnynl
 - [[https://www.ncnynl.com/archives/201806/2469.html][ROS与VSLAM入门教程]] 
 - [[https://www.ncnynl.com/archives/201708/1898.html][ROS与navigation教程-move_base]]
 - [[https://github.com/qboticslabs/mastering_ros][Mastering ROS for Robotics Programming]]
-
+- [[http://learn.turtlebot.com/][A "Getting Started" Guide for Developers Interested in Robotics]]
+  - Learning with the TurtleBot
+  - Autonomous Driving
+  - Going Forward and Avoiding Obstacles with Code
+  - Going to a Specific Location on Your Map Using Code
+#+begin_example
+https://github.com/markwsilliman/turtlebot.git
+#+end_example
+- [[https://www.ncnynl.com/archives/201609/787.html][Turtlebot入门-目录]]
+- [[http://petercorke.com/wordpress/resources/moocs][MOOCs]] Robotics Vision and Control
+- [[http://learn.turtlebot.com/][Learn TurtleBot and ROS]]
+- [[http://wiki.ros.org/cmvision][cmvision]]
 * API Docs
 ** CPP
 - [[https://theboostcpplibraries.com/][The Boost C++ Libraries]]
@@ -97,15 +106,6 @@ sudo apt-get update
 * Server
 - [[https://www.qiniu.com/][qiniu]]
 
-* Good Blogs
-- [[https://blog.csdn.net/zouxy09/article/details/14222605][zouxy09博客原创性博文导航]]
-
-- [[https://github.com/Ewenwan/MVision][Ewenwan/MVision]] 机器人视觉 移动机器人 VS-SLAM ORB-SLAM2 深度学习目标检测 yolov3 行为检测 opencv PCL 机器学习 无人驾驶
-- [[https://github.com/topics/visual-slam][visual-slam]] 
-
-* Papers
-- [[https://github.com/mengyuest/iros2018-slam-papers][iros2018-slam-papers]]
-
 * Conda
 [[https://docs.anaconda.com/anaconda/install/linux/][anaconda]]
 * DL & ML
@@ -122,50 +122,9 @@ sudo apt-get update
 - [[https://github.com/gjy3035/enet.pytorch][gjy3035/enet.pytorch]]
 - [[https://github.com/davidtvs/PyTorch-ENet][davidtvs/PyTorch-ENet]]
 
-* SLAM
-** Tutorial
-- [[http://paopaorobot.org/bbs/read.php?tid=117][【泡泡机器人】公开课链接]]
-** ORB SLAM
-- [[https://github.com/appliedAI-Initiative/orb_slam_2_ros][appliedAI-Initiative/orb_slam_2_ros]]
-** RT-SLAM
-- [[https://github.com/damarquezg/rtslam][RT-SLAM]]
-** SLAMTB
-- [[https://github.com/damarquezg/SLAMTB][SLAMTB]] 
-EKF-SLAM TOOLBOX FOR MATLAB
-** Openvslam
-- [[https://github.com/xdspacelab/openvslam][xdspacelab/openvslam]]
-** PTAM
-- [[https://github.com/Oxford-PTAM/PTAM-GPL][PTAM]]
-** RTAB Map
-- [[http://introlab.github.io/rtabmap/][RTAB-Map]]
-- https://github.com/introlab/rtabmap_ros.git ; http://wiki.ros.org/rtabmap_ros
-** Loop Closure
-- [[https://github.com/dorian3d/DLoopDetector][dorian3d/DLoopDetector]]
-** maskfusion
-
-** Openkarto
-- [[https://github.com/skasperski/OpenKarto/tree/master/source][skasperski/OpenKarto]]
-** Type Conversion Between Eigen, G2O, OpenCV
-- https://github.com/gaoxiang12/rgbd-slam-tutor2/blob/master/include/converter.h
-- https://github.com/raulmur/ORB_SLAM2/blob/master/include/Converter.h
-- [[http://www.justlive.vip/blog/article/details/3136][Blog-g2o、Eigen、Mat矩阵类型转换-Just Live]]
-- https://blog.csdn.net/hzwwpgmwy/article/details/80712967
-** Gao Xiang
-- [[https://www.cnblogs.com/gaoxiang12/][gaoxiang-cnblog]]
-- [[https://github.com/gaoxiang12/rgbd-slam-tutor2][gaoxiang12/rgbd-slam-tutor2]]
-- [[https://github.com/gaoxiang12/rgbd-slam-tutorial-gx][gaoxiang12/rgbd-slam-tutorial-gx]]
-- [[https://github.com/gaoxiang12/octomap_tutor][gaoxiang12/octomap_tutor]]
-** Loop Closure
-- [[https://github.com/craymichael/CNN_LCD][craymichael/CNN_LCD]]
- CNNs for Loop-Closure Detection on the Oxford New College and City Centre Datasets
 
 * Source code
 ** PointNet
 - [[https://github.com/charlesq34/pointnet][pointnet]]
 - [[https://github.com/peterx7803/PointNet-in-Docker][PointNet-in-Docker]]
-* Researcher
-- [[http://campar.in.tum.de/Main/KeisukeTateno][Keisuke Tateno (立野 圭祐)]]
-  - Real-time Incremental Segmentation on Dense SLAM
- - [[https://www.cnblogs.com/easonslam/p/8961387.html][Eason_Jiang SLAM算法工程师/香港城大PhD]] Skimap_ros 利用RGBD创建Octomap
-
 
